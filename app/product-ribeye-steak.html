@@ -1,0 +1,111 @@
+---
+title: Boostrap Index
+layout: ./app/layout.ejs
+engine: ejs
+current: product-ribeye-steak
+---
+
+<section class="bg-backStage">
+    <div class="container-xl ps-md-0 overflow-hidden">
+        <div class="row">
+            <div class="col-md-6 pe-md-0">
+                <div class="overflow-hidden">
+                    <img src="./assets/images/rib-eye-steak.png" class="img-fluid " alt="rib-eye-steak.png">
+                </div>
+                
+            </div>
+            <div class="col-md-6">
+                <div class="description d-flex flex-column h-100 text-primary p-3 px-md-0 pt-0 pb-3" >
+                    <span class="text-secondary mt-3">抱食主菜</span>
+                    <h2 class="description-title text-primary mb-4">20oz 美國肋眼牛排</h2>
+                    <p class="description-content text-black mb-3">特選美國特級冷藏牛排，講究美國經典煎法，在熾熱的鑄鐵鍋上煎烤出外脆內嫩的質地，再將牛油澆在專用牛排瓷盤，撲鼻而來的油香你還能忍得住嗎？</p>
+                    <h3 class="fs-7 text-black mb-auto"><i class="fas fa-genderless"></i> 主食材：肋眼牛排</h3>
+                    <p class="mb-2">價錢：NT $1,190</p>
+                    <div class="d-flex align-items-center mb-3">
+                        <p class="mb-0">熟度：</p>
+                        <select name="steak-cooked" class="border-primary bg-backStage text-primary px-2 py-1">
+                            <option value="">請選熟度</option>
+                            <option value="medium-rare">3分熟</option>
+                            <option value="medium">5分熟</option>
+                            <option value="medium-well">7分熟</option>
+                            <option value="well-done">全熟</option>
+                        </select>    
+                    </div>
+                    <div class="input-group">
+                        <button class="btn btn-outline-primary btn-text-primary " type="button" id="button-minus">-</button>
+                        <input type="num" class="form-control text-center border-primary bg-backStage text-primary" value="1">
+                        <button class="btn btn-outline-primary btn-text-primary" type="button" id="button-plus">+</button>
+                    </div>
+                    <a href="#" class="btn btn-outline-primary -mt-xs-1">加入購物車</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="swiper-popular py-11">
+    <div class="container">
+        <nav>
+            <div class="d-flex border-bottom border-primary pb-2 mb-7">
+              <h3 class="mb-0 ms-3">餐點推薦 <span class="font-monospace text-primary fs-7">Recommedation</span></h3>
+            </div>
+        </nav>
+        <div class="swiper index-swiper">
+            <div class="swiper-wrapper font-monospace">
+              <!-- Slides -->
+              <div class="swiper-slide">
+                <a href="#" class="img-info d-block">
+                  <img src="./assets/images/basque.png" class="img-fluid rounded-3" alt="house-plate_pic">
+                  <div class="img-info-background bg-transparent opacity-0">
+                    <div class="img-info-content justify-content-end">
+                      <h4 class="fs-5 fs-md-4 lh-base mb-0 text-white">巴斯克起司蛋糕</h4>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="img-info d-block">
+                  <img src="./assets/images/canele.png" class="img-fluid rounded-3" alt="steak_pic">
+                  <div class="img-info-background bg-transparent opacity-0">
+                    <div class="img-info-content justify-content-end">
+                      <h4 class="fs-5 fs-md-4 lh-base mb-0 text-white">經典可麗露</h4>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="img-info d-block">
+                  <img src="./assets/images/tiramisu.png" class="img-fluid rounded-3" alt="steak_pic">
+                  <div class="img-info-background bg-transparent opacity-0">
+                    <div class="img-info-content justify-content-end">
+                      <h4 class="fs-5 fs-md-4 lh-base mb-0 text-white">提拉米蘇</h4>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="img-info d-block">
+                  <img src="./assets/images/caffe-latte.png" class="img-fluid rounded-3" alt="salmon-pie_pic">
+                  <div class="img-info-background bg-transparent opacity-0">
+                    <div class="img-info-content justify-content-end">
+                      <h4 class="fs-5 fs-md-4 lh-base mb-0 text-white">拿鐵咖啡(熱)</h4>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="#" class="img-info d-block">
+                  <img src="./assets/images/coffee_ice.png" class="img-fluid rounded-3" alt="seafood_plate_pic">
+                  <div class="img-info-background bg-transparent opacity-0">
+                    <div class="img-info-content justify-content-end">
+                      <h4 class="fs-5 fs-md-4 lh-base mb-0 text-white">美式咖啡(冰)</h4>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination pt-2"></div>
+          </div>  
+    </div>
+</section>
+

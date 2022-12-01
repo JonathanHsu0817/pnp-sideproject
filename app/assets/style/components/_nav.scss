@@ -1,0 +1,12 @@
+.nav-title{
+    position: relative;
+    &::after{
+        position: absolute;
+        content: "";
+        width: 150%;
+        height: 1px;
+        background: $primary;
+        left: -25%;
+        bottom: -4px;
+    }
+}

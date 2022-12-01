@@ -1,6 +1,19 @@
 @import "../../../node_modules/bootstrap/scss/functions";
 @import "./helpers/variables";
+
+@import '../../../node_modules/bootstrap/scss/utilities';
+@import "./helpers/utilities";//擴充bs5 utitilites
+
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
+@import "./mixin/mixin.scss";
 
-@import './layout/index.scss'
+@import "./components/img.scss";
+@import "./components/nav.scss";
+@import "./components/banner.scss";
+
+@import "./utilities/utilities";
+
+@import "./layout/swiper";
+@import './layout/layout';
+@import './layout/index.scss';

@@ -1,5 +1,40 @@
-.index__h1 {
-  color:#00cc99;
-  font-size: 20px;
-  font-weight: 400;
+.banner{
+    .bg-img{
+        width: 100%;
+        height: 50vh;
+        background-image: url("../images/ImgBanner01.png"),url("../images/ImgBanner02.png"),url("../images/ImgBanner03.png"),url("../images/ImgBanner04.png");
+        background-size: contain;
+        background-position: center left 90px,center left 288px,center left 422px,center left 620px;
+        background-repeat: no-repeat;
+        @include xsm{
+            background-position: center left 90px,center left 348px,center left 606px,center left 864px;
+        }
+        @include md{
+            height: 60vh;
+            background-position: center left 90px,center left 512px,center left 934px,center left 1356px;
+        }
+        @include lg{
+            height: 60vh;
+            background-position: center left 90px,center left 434px,center left 778px,center left 1122px;
+        }
+        h2{
+            margin-top: 88px;
+        }
+    }
+}
+
+.about{
+    height: 36.5vh;
+    background-image: url("../images/ImgAbout01.svg"),url("../images/ImgAbout02.svg"),url("../images/ImgAbout03.svg");
+    background-repeat: no-repeat;
+    background-size: 15%,30%,18%;
+    background-position: top 0px left 18%, bottom -12px left 0px,top 0px right 0px;
+    @include md{
+        height: 30vh;
+        background-size: 15%,25%,15%;
+    }
+    @include lg{
+        background-size: 12%,18%,12%;
+        background-position: top 0px left 27%, bottom -12px left 0px,top 0px right 0px;
+    }
 }

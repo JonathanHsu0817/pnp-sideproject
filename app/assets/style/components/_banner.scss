@@ -1,0 +1,11 @@
+.menu-hot-banner{
+    background-image: url("../images/hot-banner-mb.png");
+    height: 30vh;
+    background-size: cover;
+    background-position: center top 60%;
+    @include md{
+        height: 20vh;
+        background-image: url("../images/hot-banner.png");
+        background-position: center bottom;
+    }
+}

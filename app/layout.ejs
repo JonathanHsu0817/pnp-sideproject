@@ -6,44 +6,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><%- title %></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./assets/style/all.css">
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-light bg-primary py-3">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="btn btn-primary btn-menu-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+          <i class="fas fa-bars text-white fs-4"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
+        <h1 class="mb-0 pb-2 lh-1"><a class="navbar-brand me-0" href="index.html"><img src="./assets/images/Logo.svg" alt=""></a></h1>
+          
+        <button class="btn btn-shopping-cart btn-circle bg-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasShoppingCart" aria-controls="offcanvasShoppingCart">
+          <i class="fas fa-shopping-cart text-primary fs-4"></i>
+        </button></li>
+
+        <div class="offcanvas offcanvas-start overflow-scroll" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+          <div class="offcanvas-header pt-7 pb-md-8 pb-7">
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
+            </button>
+            <h4 class="offcanvas-title" id="offcanvasMenuLabel"><button type="button" class="btn btn-outline-primary">輸入桌號</button></h4>
+          </div>
+          <ul class="menu-list list-unstyled mb-0">
+            <li class="d-block d-flex justify-content-center align-items-end fs-5 fw-bold mb-11">菜單<span class="text-primary fs-6 fw-normal ms-3">Menu</span></li>
+            <li><a href="menu-hot.html" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">熱門餐點<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Hot</span></a></li>
+            <li><a href="#" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">分享餐<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Combo Meals</span></a></li>
+            <li><a href="#" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">前菜<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Appetizer</span></a></li>
+            <li><a href="#" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">抱食主菜<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Sharing Courses</span></a></li>
+            <li><a href="#" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">主廚精選<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Delicate Courses</span></a></li>
+            <li><a href="#" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">配菜<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Side Dishes</span></a></li>
+            <li><a href="#" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">甜點<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Dessert</span></a></li>
+            <li><a href="#" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold">飲料 & 酒<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Beverages</span></a></li>
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+        </div>
+        
+        <div class="offcanvas offcanvas-end overflow-scroll" tabindex="-1" id="offcanvasShoppingCart" aria-labelledby="offcanvasShoppingCartLabel">
+          <div class="offcanvas-header pt-8 pb-md-10 pb-8">
+            <div class="d-flex justify-content-between align-items-center">
+              <i class="fas fa-shopping-cart text-primary fs-4 me-3"></i>
+              <h4 id="#offcanvasShoppingCartLabel" class="fs-4 fw-bold mb-0">購物車</h5>
+            </div>
+            <button type="button" class="btn-close text-reset me-1" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="cart-body px-3 font-monospace">
+            <div class="cart-card d-flex align-items-center border-bottom border-1 pb-4 mb-4">
+              <img class="cart-img object-position-top me-2 me-md-3" src="./assets/images/steak.png" alt="steak">
+              <div class="card-content col-5">
+                <p class="mb-2">20oz 肋眼牛排（5分熟)</p>
+                <span class="text-primary">NT$1,190</span>
+              </div>
+              <div class="cart-num col-2 ms-2 ms-md-3">
+                <input type="number" class="cart-input text-center lh-1 py-3  " id="cart-input" value="1">
+              </div>
+              
+              <a href="#" class="cart-delete d-block ms-4 ms-md-3"><i class="fas fa-trash-alt text-primary fs-4"></i></a>
+            </div>
+            <div class="cart-card d-flex align-items-center border-bottom border-1 pb-4 mb-4">
+              <img class="cart-img object-position-top me-2 me-md-3" src="./assets/images/spinach.png" alt="spinach">
+              <div class="card-content col-5">
+                <p class="mb-2">奶油燉菠菜</p>
+                <span class="text-primary">NT$190</span>
+              </div>
+              <div class="cart-num col-2 ms-2 ms-md-3">
+                <input type="number" class="cart-input text-center lh-1 py-3  " id="cart-input" value="1">
+              </div>
+              <a href="#" class="cart-delete d-block ms-4 ms-md-3"><i class="fas fa-trash-alt text-primary fs-4"></i></a>
+            </div>
+            <div class="cart-card d-flex align-items-center border-bottom border-1 pb-4 mb-4">
+              <img class="cart-img object-position-top me-2 me-md-3" src="./assets/images/mushroom.png" alt="mushroom">
+              <div class="card-content col-5">
+                <p class="mb-2">白酒炒蘑菇</p>
+                <span class="text-primary">NT$250</span>
+              </div>
+              <div class="cart-num col-2 ms-2 ms-md-3">
+                <input type="number" class="cart-input text-center lh-1 py-3  " id="cart-input" value="1">
+              </div>
+              <a href="#" class="cart-delete d-block ms-4 ms-md-3"><i class="fas fa-trash-alt text-primary fs-4"></i></a>
+            </div>
+            <div class="cart-card d-flex align-items-center border-bottom border-1 pb-4 mb-4">
+              <img class="cart-img object-position-top me-2 me-md-3" src="./assets/images/coffee_ice.png" alt="coffee_ice">
+              <div class="card-content col-5">
+                <p class="mb-2">美式咖啡(冰)</p>
+                <span class="text-primary">NT$80</span>
+              </div>
+              <div class="cart-num col-2 ms-2 ms-md-3">
+                <input type="number" class="cart-input text-center lh-1 py-3  " id="cart-input" value="1">
+              </div>
+              <a href="#" class="cart-delete d-block ms-4 ms-md-3"><i class="fas fa-trash-alt text-primary fs-4"></i></a>
+            </div>
+            <div class="cart-charge-content d-flex mb-16">
+              <div class="d-flex align-items-center ms-auto">
+                <h5 class="mb-0">小計金額</h5>
+                <span class="cart-charge-total text-primary fs-6 ms-3">NT$1,610</span>
+              </div>
+            </div>
+            <div class="d-flex flex-column">
+              <a href="#" class="btn btn-primary text-white round-0 py-3 mb-6">加點</a>
+              <a href="#" class="btn btn-outline-secondary border-0 round-0 align-self-center py-2 px-4 mb-4">清空購物車</a>
+            </div>
+        </div>
         </div>
       </div>
     </nav>
@@ -51,10 +117,26 @@
     <%- contents %>
 
     <footer class="footer">
-      footer
+      <div class="container-xl pb-28 pb-sm-16 font-monospace">
+        <div class="footer-head d-flex justify-content-between mb-7 px-sm-1">
+          <div class="logo mt-8">
+            <a href="#" class="footer-logo"><img src="./assets/images/LogoFooter.svg" alt="logofooter"></a>
+          </div>
+          <div class="platform d-flex mt-7">
+            <a href="https://www.facebook.com/palnpals" class="d-block"><i class="fab fa-facebook fs-2 text-white me-7"></i></a>
+            <a href="https://www.instagram.com/palnpals/" class="d-block"><i class="fab fa-instagram fs-2 text-white"></i></a>
+          </div>
+        </div>
+        <ul class="footer-content list-unstyled text-white px-sm-1">
+          <li class="d-sm-flex flex-wrap d-block mb-3"><h5 class="fs-6 lh-base me-7 mb-1">官方 Facebook</h5><a class="text-decoration-none text-white" href="https://www.facebook.com/palnpals">https://www.facebook.com/palnpals</a></li>
+          <li class="d-sm-flex flex-wrap d-block mb-3"><h5 class="fs-6 lh-base me-7 mb-1">官方 Instagram</h5><a class="text-decoration-none text-white" href="https://www.instagram.com/palnpals/">https://www.instagram.com/palnpals/</a></li>
+          <li class="d-sm-flex flex-wrap d-block"><h5 class="fs-6 lh-base me-7 mb-0">電話</h5><a class="text-decoration-none text-white" href="tel:+02 1234 5678">02 1234 5678</a></li>
+        </ul>
+      </div>
     </footer>
 
     <script src="./assets/js/vendors.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="./assets/js/all.js"></script>
   </body>
 

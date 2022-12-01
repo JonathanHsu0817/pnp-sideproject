@@ -1,0 +1,16 @@
+.cart-card{
+  .cart-img{
+    width: 72px;
+    @include md{
+      width: 92px;
+    }
+  }
+}
+
+.footer{
+    background-image: url("../images/ImgFooter.svg");
+    background-color: $primary;
+    background-repeat: no-repeat;
+    background-position: bottom 0px right 0px;
+  }
+
