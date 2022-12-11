@@ -1,16 +1,5 @@
 "use strict";
 
-var adminSwiper = new Swiper(".admin-swiper", {
-  slidesPerView: 4,
-  spaceBetween: 24,
-  freeMode: true,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true
-  }
-});
-"use strict";
-
 var indexSwiper = new Swiper(".index-swiper", {
   loop: true,
   speed: 500,
@@ -24,10 +13,7 @@ var indexSwiper = new Swiper(".index-swiper", {
       slidesPerView: 3
     },
     1200: {
-      slidesPerView: 2.9
-    },
-    1400: {
-      slidesPerView: 2.5
+      slidesPerView: 3.1
     }
   },
   spaceBetween: 24,
@@ -37,4 +23,4 @@ var indexSwiper = new Swiper(".index-swiper", {
     clickable: true
   }
 });
-//# sourceMappingURL=all.js.map
+//# sourceMappingURL=user-swiper.js.map

@@ -8316,6 +8316,10 @@ fieldset:disabled .btn {
   width: 50% !important;
 }
 
+.w-60 {
+  width: 60% !important;
+}
+
 .w-75 {
   width: 75% !important;
 }
@@ -10961,6 +10965,9 @@ fieldset:disabled .btn {
   .w-sm-50 {
     width: 50% !important;
   }
+  .w-sm-60 {
+    width: 60% !important;
+  }
   .w-sm-75 {
     width: 75% !important;
   }
@@ -12845,6 +12852,9 @@ fieldset:disabled .btn {
   }
   .w-md-50 {
     width: 50% !important;
+  }
+  .w-md-60 {
+    width: 60% !important;
   }
   .w-md-75 {
     width: 75% !important;
@@ -14731,6 +14741,9 @@ fieldset:disabled .btn {
   .w-lg-50 {
     width: 50% !important;
   }
+  .w-lg-60 {
+    width: 60% !important;
+  }
   .w-lg-75 {
     width: 75% !important;
   }
@@ -16616,6 +16629,9 @@ fieldset:disabled .btn {
   .w-xl-50 {
     width: 50% !important;
   }
+  .w-xl-60 {
+    width: 60% !important;
+  }
   .w-xl-75 {
     width: 75% !important;
   }
@@ -18500,6 +18516,9 @@ fieldset:disabled .btn {
   }
   .w-xxl-50 {
     width: 50% !important;
+  }
+  .w-xxl-60 {
+    width: 60% !important;
   }
   .w-xxl-75 {
     width: 75% !important;
@@ -20451,6 +20470,13 @@ fieldset:disabled .btn {
 
 .cart-delete:hover {
   opacity: 100%;
+}
+
+input:focus {
+  border-color: #EC6D4E;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(236, 109, 78, 0.3);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(236, 109, 78, 0.3);
 }
 
 .mb--1 {
