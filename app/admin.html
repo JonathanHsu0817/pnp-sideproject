@@ -28,15 +28,44 @@
             <div class="offcanvas-header pt-7 pb-md-8 pb-7">
               <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
               </button>
-              <h4 class="offcanvas-title" id="offcanvasMenuLabel"><button type="button" class="btn btn-outline-primary">輸入帳號</button></h4>
+              <ul class="js-user-selection d-flex list-unstyled mb-0">
+                <li><h4 class="offcanvas-title" id="offcanvasMenuLabel"><button type="button" class="btn btn-outline-primary btn-bg-white" data-bs-toggle="modal" data-bs-target="#loginModal">登入</button></h4></li>
+              </ul>
+              <!-- Modal -->
+              <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="exampleModalLabel">登入</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="POST" class="js-form-login">
+                          <div class="form-group mb-2">
+                            <label for="exampleInputEmail1" class="mb-2">信箱</label>
+                            <input name="email" type="email"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email@mail.com">
+                            </input>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1" class="mb-2">密碼</label>
+                            <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="●●●●●●●●">
+                            </input>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="js-btn-login btn btn-primary text-white">登入</button>
+                      </div>
+                    </div>
+                </div>
+              </div>
             </div>
-            <ul class="menu-list list-unstyled mb-0">
-              <li class="d-block d-flex justify-content-center align-items-end fs-5 fw-bold mb-11">目錄<span class="text-primary fs-6 fw-normal ms-3">Directory</span></li>
-              <li><a href="admin.html" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">訂單查看<span class="link-primary fs-6 fw-normal ms-3 font-monospace">View Order</span></a></li>
-              <li><a href="admin-revenue.html" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">查看營收<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Today's Revenue</span></a></li>
-              <li><a href="#" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">新增商品<span class="link-primary fs-6 fw-normal ms-3 font-monospace">New Product Addition</span></a></li>
-            </ul>
-          </div>
+          <ul class="menu-list list-unstyled mb-0">
+            <li class="d-block d-flex justify-content-center align-items-end fs-5 fw-bold mb-11">目錄<span class="text-primary fs-6 fw-normal ms-3">Directory</span></li>
+            <li><a href="admin.html" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">訂單查看<span class="link-primary fs-6 fw-normal ms-3 font-monospace">View Order</span></a></li>
+            <li><a href="admin-revenue.html" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">查看營收<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Today's Revenue</span></a></li>
+            <li><a href="#" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">新增商品<span class="link-primary fs-6 fw-normal ms-3 font-monospace">New Product Addition</span></a></li>
+          </ul>
           
           <div class="offcanvas offcanvas-end overflow-scroll" tabindex="-1" id="offcanvasShoppingCart" aria-labelledby="offcanvasShoppingCartLabel">
             <div class="offcanvas-header pt-8 pb-md-10 pb-8">
@@ -240,7 +269,7 @@
 
     <script src="./assets/js/vendors.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    <script src="./assets/js/all.js"></script>
     <script src="./assets/js/admin-swiper.js"></script>
+    <script src="./assets/js/renderUserLayout.js"></script>
 </body>
 </html>

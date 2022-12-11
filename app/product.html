@@ -2,17 +2,16 @@
 title: Boostrap Index
 layout: ./app/layout.ejs
 engine: ejs
-current: product-ribeye-steak
+current: product
 ---
 
 <section class="bg-backStage">
     <div class="container-xl ps-md-0 overflow-hidden">
-        <div class="row">
+        <div class="row productsContent">
             <div class="col-md-6 pe-md-0">
                 <div class="overflow-hidden">
                     <img src="./assets/images/rib-eye-steak.png" class="img-fluid " alt="rib-eye-steak.png">
                 </div>
-                
             </div>
             <div class="col-md-6">
                 <div class="description d-flex flex-column h-100 text-primary p-3 px-md-0 pt-0 pb-3" >
@@ -33,10 +32,10 @@ current: product-ribeye-steak
                     </div>
                     <div class="input-group">
                         <button class="btn btn-outline-primary btn-text-primary " type="button" id="button-minus">-</button>
-                        <input type="num" class="form-control text-center border-primary bg-backStage text-primary" value="1">
+                        <input type="num" class="form-num text-center border-primary bg-backStage text-primary flex-fill" value="1">
                         <button class="btn btn-outline-primary btn-text-primary" type="button" id="button-plus">+</button>
                     </div>
-                    <a href="#" class="btn btn-outline-primary -mt-xs-1">加入購物車</a>
+                    <a href="#" class="btn btn-outline-primary btn-bg-white -mt-xs-1">加入購物車</a>
                 </div>
             </div>
         </div>
@@ -108,4 +107,5 @@ current: product-ribeye-steak
           </div>  
     </div>
 </section>
+
 
