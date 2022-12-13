@@ -17,18 +17,6 @@ function getTableID() {
 
 var productsContent = document.querySelector(".products-hot-content");
 var userSelection = document.querySelector(".js-user-selection"); // console.log(userSelection);
-//存取productId(給product頁面使用)
-// productsContent.addEventListener("click",(e)=>{
-//   // e.preventDefault();
-//   let selectedd = e.target.getAttribute("class");
-//   console.log(selectedd);
-//   if(selectedd !== "img-top img-fluid rounded-top"){
-//     return
-//   }
-//   let productId = e.target.dataset.id;
-//   console.log(productId);
-//   localStorage.setItem('productId', productId) || 0;
-// });
 
 productsContent.addEventListener("click", menuAddtoCart);
 

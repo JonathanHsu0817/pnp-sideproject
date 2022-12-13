@@ -33,12 +33,8 @@ productsItemsContent.addEventListener("click", function (e) {
   var inputNum = document.querySelector(".form-num");
 
   if (e.target.nodeName == "BUTTON") {
-    if (e.target.getAttribute("id") == "button-minus") {
-      if (inputNum.value == 1) {
-        return;
-      } else {
-        inputNum.value--;
-      }
+    if (e.target.getAttribute("id") == "button-minus" && inputNum.value > 1) {
+      inputNum.value--;
     } else if (e.target.getAttribute("id") == "button-plus") {
       inputNum.value++;
     }
@@ -55,7 +51,7 @@ productsItemsContent.addEventListener("click", function (e) {
     userId: userId,
     productId: productId,
     tableId: tableId,
-    quantity: inputNum.value
+    quantity: Number(inputNum.value)
   }; // console.log(data);
 
   var url = "".concat(USERS_URL, "/").concat(userId, "/carts");

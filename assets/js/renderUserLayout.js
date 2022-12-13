@@ -145,17 +145,19 @@ btnUserMenu.addEventListener("click", function (e) {
 
   var tableId = e.target.value;
   localStorage.setItem('tableId', tableId);
-}); //購物車相關api
+}); ////購物車相關api
 
-var cartList = document.querySelector(".cart-body");
+var cartList = document.querySelector(".cart-body"); //指定刪除(垃圾桶)
+
 cartList.addEventListener("click", function (e) {
   var targetA = e.target.closest("a");
   console.log(targetA.childNodes[0].nodeName);
 
   if (!targetA) {
     return;
-  } else if (targetA.childNodes[0].nodeName == "I") {
-    //指定刪除(垃圾桶)
+  }
+
+  if (targetA.childNodes[0].nodeName == "I") {
     var targetId = targetA.dataset.id;
     var AUTH = "Bearer ".concat(localStorage.getItem('token'));
     axios.defaults.headers.common.Authorization = AUTH;
@@ -167,37 +169,47 @@ cartList.addEventListener("click", function (e) {
       }
     })["catch"](function (error) {
       console.log('error:::', JSON.stringify(error, null, 2));
-    }); // }else if(targetA.innerText=="清空購物車"){//刪除全部購物車
-    //   const carts = JSON.parse(localStorage.getItem('carts'));
-    //   console.log(carts)
-    //   let arrayOfDelete = [];
-    //   carts.forEach((item) => {
-    //     const request = axiosDeleteCart(item.id);
-    //     arrayOfDelete.push(request);
-    //   });
-    //   Promise.all(arrayOfDelete)
-    //     .then(function (results) {
-    //     console.log('results:::', results);
-    //       if (results.length === arrayOfDelete.length) {
-    //         renderCartState();
-    //         sweetSuccess("已全部清空~~")
-    //         setTimeout(() => {
-    //           console.log('Redirect!');
-    //           window.location.replace('./menu-hot.html');
-    //         }, 150);
-    //       }
-    //     })
-    //     .catch(function (error) {
-    //     console.log('error:::', JSON.stringify(error, null, 2));
-    //     });
+    });
   }
-});
+}); //清空購物車
+
+var deleteAllCart = document.querySelector(".js-deleteAllCart");
+deleteAllCart.addEventListener("click", function (e) {
+  if (e.target.innerText !== "清空購物車") {
+    return;
+  }
+
+  var AUTH = "Bearer ".concat(localStorage.getItem('token'));
+  axios.defaults.headers.common.Authorization = AUTH;
+  var carts = JSON.parse(localStorage.getItem('carts')); // console.log(carts)
+
+  var arrayOfDelete = [];
+  carts.forEach(function (item) {
+    var request = axiosDeleteCart(item.id);
+    arrayOfDelete.push(request);
+  });
+  Promise.all(arrayOfDelete).then(function (results) {
+    console.log('results:::', results);
+
+    if (results.length === arrayOfDelete.length) {
+      renderCartState();
+      sweetSuccess("已全部清空~~");
+      setTimeout(function () {
+        console.log('Redirect!');
+        window.location.replace('./menu-hot.html');
+      }, 150);
+    }
+  })["catch"](function (error) {
+    console.log('error:::', JSON.stringify(error, null, 2));
+  });
+}); //清空購物車所設定promise function
 
 function axiosDeleteCart() {
   var cartId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
   var url = "".concat(CARTS_URL, "/").concat(cartId);
   return axios["delete"](url);
-}
+} //渲染購物車
+
 
 function renderCartState() {
   var userId = getLoggedID();
@@ -206,7 +218,7 @@ function renderCartState() {
   // const productId = params.get('productId') || 1;
   // #Step-2.4
 
-  var url = "".concat(USERS_URL, "/").concat(userId, "/carts?_expand=product");
+  var url = "".concat(USERS_URL, "/").concat(userId, "/carts?_expand=product&_expand=table");
   axios.get(url).then(function (res) {
     if (res.status === 200) {
       var _cartData = res.data;
@@ -214,19 +226,32 @@ function renderCartState() {
       //計算總金額
 
       var sum = 0;
+      var sumWithTax = 0;
 
       _cartData.forEach(function (item) {
         var intQty = Number(item.quantity);
         var intPrice = Number(item.product.price);
         var total = intQty * intPrice;
-        sum += total;
-      }); //渲染購物車畫面
+        sum += total; // sumWithTax += (total + Math.round(intQty * intPrice * 0.1))
+      }); // const newCartData = cartData.map(item=>{
+      //   return {
+      //     "userId": item.userId,
+      //     "productId": item.productId,
+      //     "tableId": item.tableId,
+      //     "quantity": item.quantity,
+      //     "id": item.id,
+      //     "totalSum": sum,
+      //     "totalSumWithTax": sumWithTax
+      //   }
+      // })
+      // console.log(newCartData)
 
 
       renderCartList(_cartData, sum);
     }
   }); //加入購物車按扭寫在menu-hot.js & 各別product.js上(不同邏輯)
-}
+} //渲染購物車畫面function
+
 
 function renderCartList(data, total) {
   var str = "";
@@ -234,14 +259,10 @@ function renderCartList(data, total) {
     var list = "\n    <div class=\"cart-card d-flex align-items-center border-bottom border-1 pb-4 mb-4\">\n      <img class=\"cart-img object-position-top me-2 me-md-3\" src=\"".concat(item.product.img, "\" alt=\"food_pic\">\n      <div class=\"card-content col-5\">\n        <p class=\"mb-2\">").concat(item.product.title, "</p>\n        <span class=\"text-primary\">NT$").concat(item.product.price, "</span>\n      </div>\n      <div class=\"cart-num col-2 ms-2 ms-md-3\">\n        <input type=\"number\" class=\"cart-input text-center lh-1 py-3\" id=\"cart-input\" value=\"").concat(item.quantity, "\">\n      </div>\n      <a href=\"#\" data-id=\"").concat(item.id, "\" class=\"cart-delete d-block ms-4 ms-md-3\"><i class=\"fas fa-trash-alt text-primary fs-4\"></i></a>\n    </div>");
     str += list;
   });
-  var cartFooter = "\n    <div class=\"cart-charge-content d-flex mb-16\">\n      <div class=\"d-flex align-items-center ms-auto\">\n        <h5 class=\"mb-0\">\u5C0F\u8A08\u91D1\u984D</h5>\n        <span class=\"cart-charge-total text-primary fs-6 ms-3\">NT$".concat(total, "</span>\n      </div>\n    </div>\n    <div class=\"d-flex flex-column\">\n      <a href=\"#\" class=\"btn btn-primary text-white round-0 py-3 mb-6\">\u52A0\u9EDE</a>\n        <a href=\"#\" class=\"js-deleteAllCart btn btn-outline-secondary border-0 round-0 align-self-center py-2 px-4 mb-4\">\u6E05\u7A7A\u8CFC\u7269\u8ECA</a>\n    </div>");
-  str += cartFooter;
+  var cartTotal = "\n    <div class=\"cart-charge-content d-flex mb-16\">\n      <div class=\"d-flex align-items-center ms-auto\">\n        <h5 class=\"mb-0\">\u5C0F\u8A08\u91D1\u984D</h5>\n        <span class=\"cart-charge-total text-primary fs-6 ms-3\">NT$".concat(total, "</span>\n      </div>\n    </div>");
+  str += cartTotal;
   cartList.innerHTML = str;
 }
-/**
- * #Step-0: after page refresh
- */
-
 
 function init() {
   // console.log('getLoggedID():::', getLoggedID());
@@ -259,9 +280,7 @@ function init() {
   btnUserMenu.addEventListener('click', function (event) {
     return logout(event);
   });
-}
-/* end of init() */
-// MAIN
+} // MAIN
 
 
 init();
