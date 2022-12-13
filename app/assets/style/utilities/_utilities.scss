@@ -32,6 +32,14 @@
     }
 }
 
+.btn-text-white{
+    color: $white;
+    background: $primary;
+    &:hover{
+        color: $backStage;
+    }
+}
+
 .btn-text-primary{
     color: $primary;
     background: $backStage;

@@ -168,15 +168,17 @@ btnUserMenu.addEventListener("click",(e)=>{
   localStorage.setItem('tableId', tableId);
 })
 
-//購物車相關api
+////購物車相關api
 const cartList= document.querySelector(".cart-body");
 
+//指定刪除(垃圾桶)
 cartList.addEventListener("click",(e)=>{
   let targetA = e.target.closest("a")
   console.log(targetA.childNodes[0].nodeName)
   if(!targetA){
     return
-  }else if(targetA.childNodes[0].nodeName=="I"){//指定刪除(垃圾桶)
+  }
+  if(targetA.childNodes[0].nodeName=="I"){
     let targetId = targetA.dataset.id;
 
     const AUTH = `Bearer ${localStorage.getItem('token')}`;
@@ -194,41 +196,51 @@ cartList.addEventListener("click",(e)=>{
       .catch(function (error) {
         console.log('error:::', JSON.stringify(error, null, 2));
       });
-
-  // }else if(targetA.innerText=="清空購物車"){//刪除全部購物車
-  //   const carts = JSON.parse(localStorage.getItem('carts'));
-  //   console.log(carts)
-
-  //   let arrayOfDelete = [];
-  //   carts.forEach((item) => {
-  //     const request = axiosDeleteCart(item.id);
-  //     arrayOfDelete.push(request);
-  //   });
-  //   Promise.all(arrayOfDelete)
-  //     .then(function (results) {
-  //     console.log('results:::', results);
-  //       if (results.length === arrayOfDelete.length) {
-  //         renderCartState();
-  //         sweetSuccess("已全部清空~~")
-  //         setTimeout(() => {
-  //           console.log('Redirect!');
-  //           window.location.replace('./menu-hot.html');
-  //         }, 150);
-  //       }
-  //     })
-  //     .catch(function (error) {
-  //     console.log('error:::', JSON.stringify(error, null, 2));
-  //     });
   }
 })
 
+//清空購物車
+const deleteAllCart = document.querySelector(".js-deleteAllCart")
+
+deleteAllCart.addEventListener("click",(e)=>{
+  if(e.target.innerText!=="清空購物車"){
+    return
+  }
+  const AUTH = `Bearer ${localStorage.getItem('token')}`;
+  axios.defaults.headers.common.Authorization = AUTH;
+
+  const carts = JSON.parse(localStorage.getItem('carts'));
+  // console.log(carts)
+  let arrayOfDelete = [];
+    carts.forEach((item) => {
+      const request = axiosDeleteCart(item.id);
+      arrayOfDelete.push(request);
+    });
+
+  Promise.all(arrayOfDelete)
+    .then(function (results) {
+    console.log('results:::', results);
+    if (results.length === arrayOfDelete.length) {
+      renderCartState();
+      sweetSuccess("已全部清空~~")
+      setTimeout(() => {
+        console.log('Redirect!');
+        window.location.replace('./menu-hot.html');
+      }, 150);
+    }
+    })
+    .catch(function (error) {
+    console.log('error:::', JSON.stringify(error, null, 2));
+    });  
+})
+
+//清空購物車所設定promise function
 function axiosDeleteCart(cartId = 0) {
   const url = `${CARTS_URL}/${cartId}`;
-
   return axios.delete(url);
 }
 
-
+//渲染購物車
 function renderCartState(){
   const userId = getLoggedID();
 
@@ -239,7 +251,7 @@ function renderCartState(){
   // const productId = params.get('productId') || 1;
 
   // #Step-2.4
-  const url = `${USERS_URL}/${userId}/carts?_expand=product`;
+  const url = `${USERS_URL}/${userId}/carts?_expand=product&_expand=table`;
 
   axios.get(url)
   .then(res=>{
@@ -249,19 +261,34 @@ function renderCartState(){
       // console.log(cartData);
       //計算總金額
       let sum = 0;
+      let sumWithTax = 0;
       cartData.forEach((item) => {
       const intQty = Number(item.quantity);
       const intPrice = Number(item.product.price);
       const total = intQty * intPrice;
       sum += total;
-    })
-      //渲染購物車畫面
+      // sumWithTax += (total + Math.round(intQty * intPrice * 0.1))
+      })
+
+      // const newCartData = cartData.map(item=>{
+      //   return {
+      //     "userId": item.userId,
+      //     "productId": item.productId,
+      //     "tableId": item.tableId,
+      //     "quantity": item.quantity,
+      //     "id": item.id,
+      //     "totalSum": sum,
+      //     "totalSumWithTax": sumWithTax
+      //   }
+      // })
+      // console.log(newCartData)
       renderCartList(cartData,sum)
     }
   })
   //加入購物車按扭寫在menu-hot.js & 各別product.js上(不同邏輯)
 }
 
+//渲染購物車畫面function
 function renderCartList(data,total){
   let str ="";
   data.forEach(item=>{
@@ -279,25 +306,18 @@ function renderCartList(data,total){
     </div>`
     str+=list;
     });
-  let cartFooter =`
+  let cartTotal =`
     <div class="cart-charge-content d-flex mb-16">
       <div class="d-flex align-items-center ms-auto">
         <h5 class="mb-0">小計金額</h5>
         <span class="cart-charge-total text-primary fs-6 ms-3">NT$${total}</span>
       </div>
-    </div>
-    <div class="d-flex flex-column">
-      <a href="#" class="btn btn-primary text-white round-0 py-3 mb-6">加點</a>
-        <a href="#" class="js-deleteAllCart btn btn-outline-secondary border-0 round-0 align-self-center py-2 px-4 mb-4">清空購物車</a>
-    </div>`;
-  str+=cartFooter;
+    </div>`
+  str+=cartTotal;
 
   cartList.innerHTML = str;
 }
 
-/**
- * #Step-0: after page refresh
- */
  function init() {
     // console.log('getLoggedID():::', getLoggedID());
     if (getLoggedID()) {
@@ -314,7 +334,6 @@ function renderCartList(data,total){
     /* end of if-getLoggedID */
     btnUserMenu.addEventListener('click', (event) => logout(event));
   }
-  /* end of init() */
   
   // MAIN
   init();

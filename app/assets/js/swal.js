@@ -59,3 +59,4 @@ function sweetInfo(title, timer = 3000) {
         title: title
     })
 }
+

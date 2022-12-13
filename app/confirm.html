@@ -1,0 +1,74 @@
+---
+title: Boostrap Index
+layout: ./app/layout.ejs
+engine: ejs
+current: confirm
+---
+
+<section>
+    <div class="container">
+        <nav>
+            <div class="d-flex justify-content-center py-7">
+              <h2 class="nav-title mb-0 pb-2">確認餐點<span class="font-monospace text-primary fs-7 ms-3">Confirmation</span></h3>
+            </div>
+        </nav>
+    </div>
+    <div class="container confirm-content">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th width="35%">餐點資訊</th>
+                <th width="25%" class="text-center">單件價格</th>
+                <th width="15%" class="text-center">數量</th>
+                <th width="25%" class="text-end text-md-center">小計金額</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="fs-8 fs-md-6">
+                <td class="py-md-4">20oz肋眼牛排（5分熟)</td>
+                <td class="py-md-4 text-center">$1,090</td>
+                <td class="py-md-4 text-center">1</td>
+                <td class="py-md-4 text-end ">$1,090</td>
+              </tr>
+              <tr class="fs-8 fs-md-6 ">
+                <td class="py-md-4">奶油燉菠菜</td>
+                <td class="py-md-4 text-center">$190</td>
+                <td class="py-md-4 text-center">1</td>
+                <td class="py-md-4 text-end ">$190</td>
+              </tr>
+              <tr class="fs-8 fs-md-6 ">
+                <td class="py-md-4">白酒炒磨菇</td>
+                <td class="py-md-4 text-center">$250</td>
+                <td class="py-md-4 text-center">1</td>
+                <td class="py-md-4 text-end ">$250</td>
+              </tr>
+              <tr class="fs-8 fs-md-6 ">
+                <td class="py-md-4">美式咖啡(冰)</td>
+                <td class="py-md-4 text-center">$80</td>
+                <td class="py-md-4 text-center">1</td>
+                <td class="py-md-4 text-end ">$80</td>
+              </tr>
+            </tbody>
+        </table>
+        <div class="confirm-charge-content d-flex flex-column mb-16">
+            <div class="d-flex align-items-center ms-auto mb-1">
+              <h5 class="fs-7 fs-md-6 mb-0">小計金額：</h5>
+              <span class="cart-charge-total text-primary fs-7 fs-md-6 ms-2">NT $1,610</span>
+            </div>
+            <div class="d-flex align-items-center  ms-auto mb-3">
+                <h5 class="fs-8 fs-md-7 mb-0">服務費(10%)：</h5>
+                <span class="cart-charge-total text-primary fs-8 fs-md-7 ms-2">NT $161</span>
+            </div>
+            <div class="d-flex align-items-center ms-auto">
+                <h5 class="fs-7 fs-md-6 mb-0">總共：</h5>
+                <span class="cart-charge-total text-primary fs-7 fs-md-6">NT $1,771</span>
+            </div>
+        </div>
+    </div>
+    <div class="container confirm-footer px-3 font-monospace">
+      <div class="d-flex justify-content-between">
+        <a href="#" class="btn btn-outline-secondary border-0 round-0 py-3 px-4 ms-4 mb-4">返回</a>
+        <a href="#" class="js-sendOrder btn btn-primary btn-text-white round-0 align-self-center py-3 px-12 me-4 mb-4">確認送單</a>
+      </div>
+    </div>
+</section>

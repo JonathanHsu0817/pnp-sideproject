@@ -53,12 +53,8 @@ function templateOfProductsItem(products, template = ``) {
 productsItemsContent.addEventListener("click",(e)=>{
     const inputNum = document.querySelector(".form-num")
     if(e.target.nodeName=="BUTTON"){
-        if(e.target.getAttribute("id")=="button-minus"){
-            if(inputNum.value==1){
-                return
-            }else{
-                inputNum.value--;
-            }
+        if(e.target.getAttribute("id")=="button-minus"&&inputNum.value>1){
+            inputNum.value--;
         }else if(e.target.getAttribute("id")=="button-plus"){
             inputNum.value++;
         }
@@ -75,7 +71,7 @@ productsItemsContent.addEventListener("click",(e)=>{
         userId: userId,
         productId: productId,
         tableId: tableId,
-        quantity: inputNum.value
+        quantity: Number(inputNum.value)
       }
     // console.log(data);
     const url = `${USERS_URL}/${userId}/carts`;
