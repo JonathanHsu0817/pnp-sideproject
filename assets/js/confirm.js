@@ -57,22 +57,20 @@ var btnSendOrder = document.querySelector(".js-sendOrder");
 btnSendOrder.addEventListener("click", buildOrderList);
 
 function buildOrderList() {
-  var cartData = JSON.parse(getOrderData()); // console.log(cartData);
-  //訂單單一餐點整理
+  var cartData = JSON.parse(getOrderData()); //訂單單一餐點整理
 
   var orderItems = cartData.map(function (item) {
     return {
-      productId: item.productId,
+      productId: item.product.id,
       quantity: item.quantity,
       title: item.product.title,
-      price: item.product.price,
-      hasDelivered: false
+      price: item.product.price
     };
   });
   var orderTables = cartData.find(function (item) {
     return item.tableId;
   });
-  var orderTablesId = "".concat(orderTables.id);
+  var orderTablesId = "".concat(orderTables.tableId);
   var sum = 0;
   var sumWithService = 0;
   cartData.forEach(function (item) {
