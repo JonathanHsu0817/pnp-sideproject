@@ -39,7 +39,7 @@ function templateOfProductsItem(products, template = ``) {
                     <input type="number" class="form-num text-center border-1 border-primary bg-backStage text-primary flex-fill" value="${products.quantity}">
                     <button class="btn btn-outline-primary btn-text-primary" type="button" id="button-plus">+</button>
                 </div>
-                <a href="#" class="js-addCartBtn btn btn-outline-primary btn-bg-white -mt-xs-1">加入購物車</a>
+                <a href="#" class="js-addCartBtn btn btn-outline-primary btn-text-primary -mt-xs-1">加入購物車</a>
             </div>
         </div>
         `;
@@ -60,7 +60,7 @@ productsItemsContent.addEventListener("click",(e)=>{
         }
     }
 
-    if(e.target.getAttribute("class")!=="js-addCartBtn btn btn-outline-primary btn-bg-white -mt-xs-1"){
+    if(e.target.getAttribute("class")!=="js-addCartBtn btn btn-outline-primary btn-text-primary -mt-xs-1"){
         return
     }
     let userId = getLoggedID();

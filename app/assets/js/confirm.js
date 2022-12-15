@@ -60,24 +60,22 @@ btnSendOrder.addEventListener("click",buildOrderList);
 
 function buildOrderList(){
     const cartData = JSON.parse(getOrderData());
-    // console.log(cartData);
 
     //訂單單一餐點整理
     const orderItems = cartData.map(item=>{
         return {
-            productId: item.productId,
+            productId: item.product.id,
             quantity: item.quantity,
             title: item.product.title,
-            price: item.product.price,
-            hasDelivered: false
+            price: item.product.price
         };
     })
 
     const orderTables = cartData.find(item=>{
         return item.tableId
     })
-    const orderTablesId = `${orderTables.id}`;
-
+    const orderTablesId = `${orderTables.tableId}`;
+    
     let sum = 0;
     let sumWithService = 0;
     cartData.forEach((item) => {
@@ -96,7 +94,7 @@ function buildOrderList(){
         products: orderItems,
         payment: sum,
         paymentTaxIncluded: sumWithService,
-        hasAllDelivered: false,
+        hasAllDelivered: false
     }
     // console.log(newOrder);
     sendOrderData(newOrder);
