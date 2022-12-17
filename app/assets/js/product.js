@@ -5,6 +5,15 @@ const PRODUCTS_URL = `${BASE_URL}/products`;
 let id = 1;
 
 const productsItemsContent = document.querySelector(".productsContent");
+const swiperProduct = document.querySelector('.js-swiper-product')
+
+swiperProduct.addEventListener('click',getTargetproductId)
+
+function getTargetproductId(e){
+  // e.preventDefault();
+  const targetID = e.target.closest("A").dataset.id;
+  localStorage.setItem('productId', targetID) || 0;
+}
 
 function getLoggedID() {
     return localStorage.getItem('userId') || 0;
@@ -17,6 +26,7 @@ function getTableID() {
 function getProductID() {
     return localStorage.getItem('productId') || 0;
   }
+
 
 function templateOfProductsItem(products, template = ``) {
     // console.log('products:::', JSON.stringify(products, null, 2));

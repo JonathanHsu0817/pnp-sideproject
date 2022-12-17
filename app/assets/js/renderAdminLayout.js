@@ -146,10 +146,13 @@ function renderTotalState(){
   .then(res=>{
     if (res.status === 200) {
       const cartData = res.data;
-      console.log(cartData);
+      // console.log(cartData);
+      const cartDataFiltered = cartData.filter(item=>{
+        return item.hasAllDelivered == false;
+      })
       //整理數值
       
-      renderTotalList(sortingData(cartData))
+      renderTotalList(sortingData(cartDataFiltered))
       // renderTotalList(cartData,sum)
     }
   })

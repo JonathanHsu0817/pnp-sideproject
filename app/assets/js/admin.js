@@ -4,9 +4,6 @@ const USERS_URL = `${BASE_URL}/600/users`;
 const ORDERS_URL = `${BASE_URL}/660/orders?_expand=table`;
 
 const orderContent = document.querySelector(".order-content")
-// const orderList = document.querySelector(".order-list")
-// // console.log(orderList)
-
 
 orderContent.addEventListener("click",(e)=>{
     // console.log(e.target.nodeName)
@@ -31,11 +28,16 @@ orderContent.addEventListener("click",(e)=>{
 
         const url = `${BASE_URL}/660/orders/${orderId}`
         
-        axios.delete(url)
+        const data = {
+            hasAllDelivered: true
+        }
+
+        axios.patch(url,data)
         .then(res=>{
             console.log("已刪除")
             sweetSuccess("完成~")
             getOrderData()
+            renderTotalState();
         })
         .catch(err=>{
             console.log("再確認一下")
@@ -95,6 +97,7 @@ function renderCartList(data){
 }
 
 function getOrderData(){
+    
     const userId = getLoggedID();
 
     const AUTH = `Bearer ${localStorage.getItem('token')}`;
@@ -105,7 +108,11 @@ function getOrderData(){
     axios.get(url)
     .then(res=>{
         const orderData = res.data
-        renderCartList(orderData);
+        const orderDataFiltered= orderData.filter(item=>{
+           return item.hasAllDelivered == false;
+        })
+        // console.log(orderDataFiltered)
+        renderCartList(orderDataFiltered);
     })
     .catch(err=>{
         console.log(err);
@@ -126,3 +133,8 @@ function switchTimeStamp(timeStamp){
     const thisTime = `${thisStamp.getFullYear()}/${thisStamp.getMonth()+1}/${thisStamp.getDate()} ${thisStamp.getHours()}:${minutes}`
     return thisTime;
 }
+
+new Sortable(orderContent,{
+    ghostClass: 'blue-background-class',
+    animation:200
+})

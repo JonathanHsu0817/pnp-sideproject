@@ -185,7 +185,7 @@ function renderConfirmContent(data,sum){
         let template = `
         <tr class="fs-8 fs-md-6">
             <td class="py-md-4">${item.product.title}</td>
-            <td class="py-md-4 text-center">$${item.product.price}</td>
+            <td class="py-md-4 text-center">$${toThousandsComma(item.product.price)}</td>
             <td class="py-md-4 text-center">
                 <div class="d-flex col-md-6 col-12 ms-md-15">
                     <button type="button" id="minus" data-method="patch" class='btn btn-link text-decoration-none px-2' value="-">-</button>
@@ -193,7 +193,7 @@ function renderConfirmContent(data,sum){
                     <button type="button" id="plus" data-method="patch" class='btn btn-link text-decoration-none px-2' value="+">+</button>
                 </div>
             </td>
-            <td class="py-md-4 text-end ">$${item.product.price*item.quantity}</td>
+            <td class="py-md-4 text-end ">$${toThousandsComma(item.product.price*item.quantity)}</td>
         </tr>
         `
         str+=template;
@@ -220,15 +220,15 @@ function renderConfirmContent(data,sum){
     <div class="confirm-charge-content d-flex flex-column mb-16">
         <div class="d-flex align-items-center ms-auto mb-1">
             <h5 class="fs-7 fs-md-6 mb-0">小計金額：</h5>
-            <span class="cart-charge-total text-primary fs-7 fs-md-6 ms-2">NT $${sum}</span>
+            <span class="cart-charge-total text-primary fs-7 fs-md-6 ms-2">NT $${toThousandsComma(sum)}</span>
          </div>
         <div class="d-flex align-items-center  ms-auto mb-3">
             <h5 class="fs-8 fs-md-7 mb-0">服務費(10%)：</h5>
-            <span class="cart-charge-total text-primary fs-8 fs-md-7 ms-2">NT $${Math.round(sum*0.1)}</span>
+            <span class="cart-charge-total text-primary fs-8 fs-md-7 ms-2">NT $${toThousandsComma(Math.round(sum*0.1))}</span>
         </div>
         <div class="d-flex align-items-center ms-auto">
             <h5 class="fs-7 fs-md-6 mb-0">總共：</h5>
-            <span class="cart-charge-total text-primary fs-7 fs-md-6">NT ${Math.round(sum*0.1)+sum}</span>
+            <span class="cart-charge-total text-primary fs-7 fs-md-6">NT $${toThousandsComma(Math.round(sum*0.1)+sum)}</span>
         </div>
     </div>
     `
@@ -279,3 +279,8 @@ function init(){
   }
 
 init()
+
+//utillities
+function　toThousandsComma(num){
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

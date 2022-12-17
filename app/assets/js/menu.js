@@ -4,6 +4,7 @@ let BASE_PAGE = 1
 // const BASE_PRODUCT_URL = `${BASE_URL}/664/products?_page=${BASE_PAGE}&_limit=6`;
 const USERS_URL = `${BASE_URL}/600/users`;
 
+
 function getLoggedID() {
   return localStorage.getItem('userId') || 0;
 }
@@ -20,11 +21,11 @@ const menuPage = document.querySelector(".menu-container");
 // console.log(menuPage)
 
 //在目錄加入購物車按扭
-const productsContent = document.querySelector(".products-hot-content")
+// const productsContent = document.querySelector(".products-hot-content")
 const userSelection = document.querySelector(".js-user-selection");
 // console.log(userSelection);
 
-productsContent.addEventListener("click",menuAddtoCart);
+menuPage.addEventListener("click",menuAddtoCart);
 
 function menuAddtoCart(e) {
   let addBtnInMenu = e.target.innerText;
@@ -37,6 +38,10 @@ function menuAddtoCart(e) {
     let productId = e.target.dataset.id;
     let userId = getLoggedID();
     let tableId = getTableID();
+
+    //確認購物車是否有重複
+    const AUTH = `Bearer ${localStorage.getItem('token')}`;
+    axios.defaults.headers.common.Authorization = AUTH;
 
     const data = {
       userId: userId,
@@ -76,13 +81,13 @@ function templateOfProducts(products, template = ``) {
     let list = "";
     products.forEach(function (item) {
       list += `
-          <div class="col-md-4 col-sm-6">
-              <div class="card border-0 shadow rounded-3 mb-4 position-relative">
+          <div class="col-md-4 col-6 mb-4">
+              <div class="card border-0 shadow rounded-3 position-relative h-100">
                   <a href="./product.html?productId=${item.id}" data-id="${item.id}" class="overflow-hidden d-block"><img src="${item.img}" class="img-top img-fluid rounded-top" alt="food-picz"></a>
                   <div class="card-body d-flex flex-column align-items-center text-center">
                       <h3 class="fs-5 text-black">${item.title}</h3>
-                      <span class="text-primary">NT $${item.price}</span>
-                      <a href="#" data-id="${item.id}" class="js-addToCartBtn btn btn-outline-primary rounded-3 btn-text-white btn-xl mt-3">
+                      <span class="text-primary mb-2">NT $${toThousandsComma(item.price)}</span>
+                      <a href="#" data-id="${item.id}" class="js-addToCartBtn btn btn-outline-primary rounded-3 btn-text-white btn-xl mt-3 mt-auto">
                           加入購物車
                       </a>
                   </div>
@@ -178,7 +183,6 @@ function templateOfProducts(products, template = ``) {
     pagination.innerHTML = liTag;
   }
   
-
 function renderProducts(page) {
     let category = getCategory();
     (!category)? category=``:category = `category=${getCategory()}&`;
@@ -190,8 +194,8 @@ function renderProducts(page) {
 
         if (response.status === 200) {
           
-          const productsData = response.data;
-          console.log(productsData)
+          let productsData  = response.data;
+          // console.log(productsData)
           menuPage.innerHTML = templateOfProducts(productsData);
         }
       })
@@ -210,3 +214,8 @@ function renderProducts(page) {
   }
   
   init();
+
+//utillities
+function　toThousandsComma(num){
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

@@ -224,6 +224,33 @@ cartList.addEventListener("click",(e)=>{
   }
 })
 
+
+//確認是否購物空值
+const btnConfirm = document.querySelector(".js-confirm")
+
+btnConfirm.addEventListener("click",(e)=>{
+  if(e.target.innerText!=="加點"){
+    return
+  }
+  const userId = getLoggedID();
+
+  const AUTH = `Bearer ${localStorage.getItem('token')}`;
+  axios.defaults.headers.common.Authorization = AUTH;
+  
+  const url = `${USERS_URL}/${userId}/carts?_expand=product&_expand=table`;
+
+  axios.get(url)
+  .then(res=>{
+    if (res.status === 200) {
+      cartData = res.data;
+      if(cartData.length==0){
+        sweetError("購物車是空的喔~")
+        return
+      }
+      window.location.replace('./confirm.html')
+    }
+  })
+})
 //清空購物車
 const deleteAllCart = document.querySelector(".js-deleteAllCart")
 
@@ -305,7 +332,7 @@ function renderCartList(data,total){
       <img class="cart-img object-position-top me-2 me-md-3" src="${item.product.img}" alt="food_pic">
       <div class="card-content col-5">
         <p class="mb-2">${item.product.title}</p>
-        <span class="text-primary">NT$${item.product.price}</span>
+        <span class="text-primary">NT$${toThousandsComma(item.product.price)}</span>
       </div>
       <div class="cart-num col-2 ms-2 ms-md-3">
         <input type="number" class="cart-input text-center lh-1 py-3" id="cart-input" value="${item.quantity}">
@@ -318,7 +345,7 @@ function renderCartList(data,total){
     <div class="cart-charge-content d-flex mb-16">
       <div class="d-flex align-items-center ms-auto">
         <h5 class="mb-0">小計金額</h5>
-        <span class="cart-charge-total text-primary fs-6 ms-3">NT$${total}</span>
+        <span class="cart-charge-total text-primary fs-6 ms-3">NT$${toThousandsComma(total)}</span>
       </div>
     </div>`
   str+=cartTotal;
@@ -346,3 +373,8 @@ function renderCartList(data,total){
   
   // MAIN
   init();
+
+  //utillities
+function　toThousandsComma(num){
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

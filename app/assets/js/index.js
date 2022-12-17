@@ -7,7 +7,8 @@ const swiperHot = document.querySelector('.js-swiper-hot')
 swiperHot.addEventListener('click',getTargetproductId)
 
 function getTargetproductId(e){
-    const targetID = e.target.closest(".img-info-background").parentNode.dataset.id
+    // e.preventDefault();
+    const targetID = e.target.closest("A").dataset.id;
     localStorage.setItem('productId', targetID) || 0;
 }
 
@@ -24,7 +25,7 @@ function templateOfSwipers(products, template = ``) {
             <img src="${item.img}" class="img-fluid rounded-3" alt="food_pic">
             <div class="img-info-background bg-transparent opacity-0">
                 <div class="img-info-content justify-content-end">
-                <h4 class="fs-5 fs-md-4 lh-base mb-0 text-white">${item.title}</h4>
+                <h4 class="fs-6 fs-md-5 fs-md-4 lh-base mb-0 text-white">${item.title}</h4>
                 </div>
             </div>
             </a>
@@ -58,7 +59,7 @@ function renderSwiper() {
   }
 
 function init(){
-    renderSwiper();
+    // renderSwiper();
   }
   
   init();
