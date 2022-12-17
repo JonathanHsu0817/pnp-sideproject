@@ -1,7 +1,7 @@
 const BASE_URL = 'http://localhost:3000';
 // const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app/';
 const USERS_URL = `${BASE_URL}/600/users`;
-const PRODUCTS_URL = `${BASE_URL}/664/products`;
+const PRODUCTS_URL = `${BASE_URL}/products`;
 let id = 1;
 
 const productsItemsContent = document.querySelector(".productsContent");
@@ -94,7 +94,7 @@ productsItemsContent.addEventListener("click",(e)=>{
         }
     });
 })
-
+ 
 function renderProductsPage() {
     const productId = getProductID();
 

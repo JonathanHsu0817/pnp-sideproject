@@ -6,18 +6,38 @@ current: index
 ---
 
 <section class="banner bg-black">
-  <div class="container-xl pe-0 overflow-hidden">
-    <div class="row">
-      <div class="col">
-        <div class="bg-img d-flex flex-column align-items-start my-6 ms-md-1">
-          <h2 class="fs-1 mb-md-4 text-white d-md-block d-none lh-base">STAY STARVING,<br>
-            BE HUNGRY</h2>
-          <h2 class="fs-2 mb-7 text-white d-md-none lh-base">Stay Starving,
-            <br>Be Hungry</h2>
-          <a href="./menu-hot.html" class="btn btn-outline-primary btn-bg-white border-0 btn-xxl">Let's Dig In</a>
+  <div class="container-xl ps-0 pe-0 overflow-hidden position-relative">
+      <div class="row position-absolute z-10">
+          <div class="col">
+            <div class="d-flex flex-column align-items-start mt-12 mt-md-20 ms-3 ms-md-4">
+              <h2 class="fs-1 mb-md-4 text-white d-md-block d-none lh-base">STAY STARVING,<br>
+                BE HUNGRY</h2>
+              <h2 class="fs-2 mb-7 text-white d-md-none lh-base">Stay Starving,
+                <br>Be Hungry</h2>
+              <a href="./menu.html" class="btn btn-outline-primary btn-bg-white border-0 btn-xxl">Let's Dig In</a>
+            </div>
+          </div>
         </div>
+      <div class="swiper banner-swiper">
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <div class="bg-img bg-img4"></div>
+            </div>
+            <div class="swiper-slide">
+              <div class="bg-img bg-img1"></div>
+            </div>
+            <div class="swiper-slide">
+              <div class="bg-img bg-img2"></div>
+            </div>
+            <div class="swiper-slide">
+              <div class="bg-img bg-img3"></div>
+            </div>
+            <div class="swiper-slide">
+              <div class="bg-img bg-img5"></div>
+            </div>
+          </div>
       </div>
-    </div>
   </div>
 </section>
 <section class="about bg-backStage d-flex justify-content-center align-items-center">
@@ -35,14 +55,14 @@ current: index
     <nav>
       <div class="d-flex justify-content-between mb-7">
         <h3 class="mb-0">熱門餐點 <span class="font-monospace text-primary fs-7">Popular Dishes</span></h3>
-        <a href="menu-hot.html" class="d-block more d-flex align-items-center text-decoration-none">
+        <a href="./menu.html" class="d-block more d-flex align-items-center text-decoration-none">
           <h4 class="font-monospace text-black fs-7 lh-base me-2 mb-0">MORE</h4>
           <i class="fas fa-chevron-circle-right text-primary fs-4"></i>
         </a>
       </div>
     </nav>
     <div class="swiper index-swiper">
-      <div class="swiper-wrapper font-monospace">
+      <div class="swiper-wrapper font-monospace js-swiper-hot">
         <!-- Slides -->
         <div class="swiper-slide">
           <a href="#" class="img-info d-block">
@@ -55,11 +75,11 @@ current: index
           </a>
         </div>
         <div class="swiper-slide">
-          <a href="product-ribeye-steak.html" class="img-info d-block">
+          <a href="#" class="img-info d-block">
             <img src="./assets/images/rib-eye-steak.png" class="img-fluid rounded-3" alt="steak_pic">
             <div class="img-info-background bg-transparent opacity-0">
               <div class="img-info-content justify-content-end">
-                <h4 class="fs-5 fs-md-4 lh-base mb-0 text-white">40oz 肋眼牛排</h4>
+                <h4 class="fs-5 fs-md-4 lh-base mb-0 text-white">20oz 肋眼牛排</h4>
               </div>
             </div>
           </a>

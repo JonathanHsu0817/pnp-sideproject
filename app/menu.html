@@ -2,13 +2,13 @@
 title: Boostrap Index
 layout: ./app/layout.ejs
 engine: ejs
-current: menu-hot
+current: menu
 ---
 
-<section class="menu-hot-banner bg-black">
+<section class="menu-banner bg-black">
 </section>
-<section class="menu-hot bg-backStage">
-    <div class="container">
+<section class="menu bg-backStage">
+    <div class="container menu-container">
         <nav>
             <div class="d-flex justify-content-center py-7">
               <h2 class="nav-title mb-0 pb-2">熱門餐點 <span class="font-monospace text-primary fs-7">Popular Dishes</span></h3>
@@ -88,6 +88,10 @@ current: menu-hot
                 </div>    
             </div>
         </div>
+    </div>
+</section>
+<section class="menu-pagination">
+    <div class="container">
         <nav aria-label="Page navigation">
             <ul class="pagination d-flex justify-content-center mb-0 py-7 pb-7">
                 <li class="page-item">
@@ -95,7 +99,7 @@ current: menu-hot
                     <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                <li class="page-item active"><a class="page-link" href="./menu-hot.html">1</a></li>
+                <li class="page-item active"><a class="page-link" href="./menu.html">1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                 <li class="page-item"><a class="page-link" href="#">...</a></li>

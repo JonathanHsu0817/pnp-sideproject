@@ -12,6 +12,13 @@ function getTableID() {
   return localStorage.getItem('tableId') || 0;
 }
 
+function getCategory() {
+  return localStorage.getItem('category') || 0;
+}
+
+const menuPage = document.querySelector(".menu-container");
+// console.log(menuPage)
+
 //在目錄加入購物車按扭
 const productsContent = document.querySelector(".products-hot-content")
 const userSelection = document.querySelector(".js-user-selection");
@@ -66,22 +73,43 @@ function postToCart(url,data){
 //渲染卡片
 function templateOfProducts(products, template = ``) {
     // console.log('products:::', JSON.stringify(products, null, 2));
+    let list = "";
     products.forEach(function (item) {
-        template += `
-            <div class="col-md-4 col-sm-6">
-                <div class="card border-0 shadow rounded-3 mb-4 position-relative">
-                    <a href="./product.html?productId=${item.id}" data-id="${item.id}" class="overflow-hidden d-block"><img src="${item.img}" class="img-top img-fluid rounded-top" alt="food-picz"></a>
-                    <div class="card-body d-flex flex-column align-items-center text-center">
-                        <h3 class="fs-5 text-black">${item.title}</h3>
-                        <span class="text-primary">NT $${item.price}</span>
-                        <a href="#" data-id="${item.id}" class="js-addToCartBtn btn btn-outline-primary rounded-3 btn-text-white btn-xl mt-3">
-                            加入購物車
-                        </a>
-                    </div>
-                </div>    
-            </div>
-      `;
-    });
+      list += `
+          <div class="col-md-4 col-sm-6">
+              <div class="card border-0 shadow rounded-3 mb-4 position-relative">
+                  <a href="./product.html?productId=${item.id}" data-id="${item.id}" class="overflow-hidden d-block"><img src="${item.img}" class="img-top img-fluid rounded-top" alt="food-picz"></a>
+                  <div class="card-body d-flex flex-column align-items-center text-center">
+                      <h3 class="fs-5 text-black">${item.title}</h3>
+                      <span class="text-primary">NT $${item.price}</span>
+                      <a href="#" data-id="${item.id}" class="js-addToCartBtn btn btn-outline-primary rounded-3 btn-text-white btn-xl mt-3">
+                          加入購物車
+                      </a>
+                  </div>
+              </div>    
+          </div>
+    `;
+  });
+    // products.find(item=>{
+    //   return item.category
+    // })
+    // console.log(products)
+    // if(products.category==undefined){
+    //   products.category=`熱門餐點`;
+    //   products.category_e = `Popular Dishes`
+    // }
+    let page =`
+    <nav>
+      <div class="d-flex justify-content-center py-7">
+        <h2 class="nav-title mb-0 pb-2">熱門餐點<span class="font-monospace text-primary fs-7 ms-4">Popular Dishes</span></h3>
+      </div>
+    </nav>
+    <div class="row mb-0 products-hot-content">
+      ${list}
+    </div>
+    `
+    template += page
+    
     /* end of products.forEach() */
     return template;
   }
@@ -92,7 +120,7 @@ function templateOfProducts(products, template = ``) {
   let totalPages = 5
   
   pagination.addEventListener("click",(e)=>{
-    console.log(e.target)
+    // console.log(e.target)
     if(e.target.innerText=="»"){
       BASE_PAGE++
     }else if(e.target.innerText=="«"){
@@ -152,7 +180,9 @@ function templateOfProducts(products, template = ``) {
   
 
 function renderProducts(page) {
-    const url = `${BASE_URL}/664/products?_page=${page}&_limit=6`;
+    let category = getCategory();
+    (!category)? category=``:category = `category=${getCategory()}&`;
+    const url = `${BASE_URL}/products?${category}_page=${page}&_limit=6`;
     axios
       .get(url)
       .then(function (response) {
@@ -161,7 +191,8 @@ function renderProducts(page) {
         if (response.status === 200) {
           
           const productsData = response.data;
-          productsContent.innerHTML = templateOfProducts(productsData);
+          console.log(productsData)
+          menuPage.innerHTML = templateOfProducts(productsData);
         }
       })
 

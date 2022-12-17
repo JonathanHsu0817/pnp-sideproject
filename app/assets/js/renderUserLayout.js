@@ -9,6 +9,8 @@ const CARTS_URL = `${BASE_URL}/600/carts`;
 const formLogin = document.querySelector(".js-form-login");
 const btnLogin = document.querySelector(".js-btn-login");
 const btnUserMenu = document.querySelector('.js-user-selection');
+const menuList = document.querySelector(".menu-list");
+// console.log(menuList);
 
 let cartData = [];
 
@@ -90,26 +92,25 @@ function templateOfUserMenu(user, template = '') {
     /* end of (isAdmin) */
 
     template += `
-          <li class="nav-item">
-            <div class="d-flex">
-                <select name="table-selection" id="table-selection" class="border-primary bg-backStage text-primary me-2">
-                <option value="請選擇桌號">請選擇桌號</option>
-                <option value="1">B1</option>
-                <option value="2">B2</option>
-                <option value="3">B3</option>
-                <option value="4">B4</option>
-                <option value="5">B5</option>
-                <option value="6">B6</option>
-                <option value="7">B7</option>
-                <option value="8">B8</option>
-                <option value="9">B9</option>
-              </select>
-                <a href="#" class="js-logout d-block btn btn-outline-primary btn-bg-white">
-                登出
-                </a>
-            </div>
-        </li>
-    `;
+      <li class="nav-item">
+        <div class="d-flex">
+          <select name="table-selection" id="table-selection" class="border-primary bg-backStage text-primary me-2">
+            <option value="請選擇桌號">請選擇桌號</option>
+            <option value="1">B1</option>
+            <option value="2">B2</option>
+            <option value="3">B3</option>
+            <option value="4">B4</option>
+            <option value="5">B5</option>
+            <option value="6">B6</option>
+            <option value="7">B7</option>
+            <option value="8">B8</option>
+            <option value="9">B9</option>
+          </select>
+          <a href="#" class="js-logout d-block btn btn-outline-primary btn-bg-white">
+            登出
+          </a>
+        </div>
+      </li>`;
     return template;
 }
   /* end of templateOfUserMenu() */ 
@@ -117,8 +118,6 @@ function templateOfUserMenu(user, template = '') {
   function renderUserMenu() {
     const userId = getLoggedID();
     const url = `${BASE_URL}/600/users/${userId}`;
-  
-    // console.log('url >>> ', url);
   
     axios.get(url)
     .then(function (response) {
@@ -134,7 +133,7 @@ function templateOfUserMenu(user, template = '') {
         // console.log('error:::', JSON.stringify(error, null, 2));
         if (error?.response?.status === 401) {
             console.log('401');
-            // localStorage.removeItem('myCat');
+            
             localStorage.clear();
         }
     });
@@ -142,9 +141,9 @@ function templateOfUserMenu(user, template = '') {
   /* end of renderUserMenu() */  
   function logout(e) {
     const target = e.target;
-    // console.log('target:::', target);
+    
     const targetBtn = e.target.closest('.js-logout');
-    // console.log('targetBtn:::', targetBtn);
+    
     if (!targetBtn) {
       return;
     }
@@ -157,6 +156,32 @@ function templateOfUserMenu(user, template = '') {
     /* end of setTimeout */
   }
   /* end of logout(event) */  
+
+  //抓取指定菜單選項
+  menuList.addEventListener("click",(e)=>{
+    // e.preventDefault();
+    let targetMenuSelection = e.target.closest("a").dataset.category;
+    // console.log(targetMenuSelection)
+    localStorage.setItem('category', targetMenuSelection)
+  })
+    
+
+  //渲染菜單選單
+  function renderResturantMenu(){
+    let content = `
+    <li class="d-block d-flex justify-content-center align-items-end fs-5 fw-bold mb-11">菜單<span class="text-primary fs-6 fw-normal ms-3">Menu</span></li>
+    <li><a href="./menu.html" data-category="" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">熱門餐點<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Hot</span></a></li>
+    <li><a href="./menu.html" data-category="" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">分享餐<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Combo Meals</span></a></li>
+    <li><a href="./menu.html" data-category="前菜" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">前菜<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Appetizer</span></a></li>
+    <li><a href="./menu.html" data-category="抱食主菜" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">抱食主菜<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Sharing Courses</span></a></li>
+    <li><a href="./menu.html" data-category="主廚精選" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">主廚精選<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Delicate Courses</span></a></li>
+    <li><a href="./menu.html" data-category="配菜" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">配菜<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Side Dishes</span></a></li>
+    <li><a href="./menu.html" data-category="甜點" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold mb-9">甜點<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Dessert</span></a></li>
+    <li><a href="./menu.html" data-category="飲料及酒" class="d-block d-flex justify-content-center align-items-end btn border-0 fs-5 fw-bold">飲料 & 酒<span class="link-primary fs-6 fw-normal ms-3 font-monospace">Beverages</span></a></li>
+    `
+    // console.log(content)
+    menuList.innerHTML = content;
+  }
 
 //選取桌號值
 btnUserMenu.addEventListener("click",(e)=>{
@@ -174,7 +199,7 @@ const cartList= document.querySelector(".cart-body");
 //指定刪除(垃圾桶)
 cartList.addEventListener("click",(e)=>{
   let targetA = e.target.closest("a")
-  console.log(targetA.childNodes[0].nodeName)
+  // console.log(targetA.childNodes[0].nodeName)
   if(!targetA){
     return
   }
@@ -188,7 +213,7 @@ cartList.addEventListener("click",(e)=>{
   
     axios.delete(url)
       .then(function (res) {
-      // console.log('carts:::', JSON.stringify(res, null, 2));
+
         if (res.status === 200) {
           renderCartState();
         }
@@ -225,7 +250,7 @@ deleteAllCart.addEventListener("click",(e)=>{
       sweetSuccess("已全部清空~~")
       setTimeout(() => {
         console.log('Redirect!');
-        window.location.replace('./menu-hot.html');
+        window.location.replace('./menu.html');
       }, 150);
     }
     })
@@ -246,11 +271,7 @@ function renderCartState(){
 
   const AUTH = `Bearer ${localStorage.getItem('token')}`;
   axios.defaults.headers.common.Authorization = AUTH;
-
-  // const params = new URLSearchParams(document.location.search);
-  // const productId = params.get('productId') || 1;
-
-  // #Step-2.4
+  
   const url = `${USERS_URL}/${userId}/carts?_expand=product&_expand=table`;
 
   axios.get(url)
@@ -267,25 +288,12 @@ function renderCartState(){
       const intPrice = Number(item.product.price);
       const total = intQty * intPrice;
       sum += total;
-      // sumWithTax += (total + Math.round(intQty * intPrice * 0.1))
       })
-
-      // const newCartData = cartData.map(item=>{
-      //   return {
-      //     "userId": item.userId,
-      //     "productId": item.productId,
-      //     "tableId": item.tableId,
-      //     "quantity": item.quantity,
-      //     "id": item.id,
-      //     "totalSum": sum,
-      //     "totalSumWithTax": sumWithTax
-      //   }
-      // })
       // console.log(newCartData)
       renderCartList(cartData,sum)
     }
   })
-  //加入購物車按扭寫在menu-hot.js & 各別product.js上(不同邏輯)
+  //加入購物車按扭寫在menu.js & 各別product.js上(不同邏輯)
 }
 
 //渲染購物車畫面function
@@ -327,6 +335,7 @@ function renderCartList(data,total){
       axios.defaults.headers.common.Authorization = AUTH;
 
       renderUserMenu();
+      renderResturantMenu();
 
       //購物車
       renderCartState();

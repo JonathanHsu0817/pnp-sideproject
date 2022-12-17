@@ -154,7 +154,7 @@ function sendOrderData(data){
                     console.log('已全部刪除！');
                     setTimeout(() => {
                       console.log('Redirect!');
-                      window.location.replace('./menu-hot.html');
+                      window.location.replace('./menu.html');
                     }, 1500);
                     /* end of setTimeout */
                   }
