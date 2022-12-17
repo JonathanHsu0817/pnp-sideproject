@@ -1,5 +1,31 @@
 "use strict";
 
+var bannerSwiper = new Swiper(".banner-swiper", {
+  loop: true,
+  speed: 6000,
+  autoplay: {
+    delay: 0
+  },
+  centeredSlides: true,
+  slidesPerView: 2,
+  breakpoints: {
+    768: {
+      slidesPerView: 3
+    },
+    992: {
+      slidesPerView: 4
+    },
+    1080: {
+      slidesPerView: 5
+    }
+  },
+  spaceBetween: 18,
+  effect: 'slide',
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true
+  }
+});
 var indexSwiper = new Swiper(".index-swiper", {
   loop: true,
   speed: 500,

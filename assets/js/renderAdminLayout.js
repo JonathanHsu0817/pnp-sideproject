@@ -133,10 +133,13 @@ function renderTotalState() {
   var url = "".concat(ORDERS_URL);
   axios.get(url).then(function (res) {
     if (res.status === 200) {
-      var cartData = res.data;
-      console.log(cartData); //整理數值
+      var cartData = res.data; // console.log(cartData);
 
-      renderTotalList(sortingData(cartData)); // renderTotalList(cartData,sum)
+      var cartDataFiltered = cartData.filter(function (item) {
+        return item.hasAllDelivered == false;
+      }); //整理數值
+
+      renderTotalList(sortingData(cartDataFiltered)); // renderTotalList(cartData,sum)
     }
   }); //加入購物車按扭寫在menu-hot.js & 各別product.js上(不同邏輯)
 }

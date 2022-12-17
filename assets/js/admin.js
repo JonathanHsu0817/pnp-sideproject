@@ -4,9 +4,7 @@ var BASE_URL = 'http://localhost:3000'; // const BASE_URL = 'https://sideproject
 
 var USERS_URL = "".concat(BASE_URL, "/600/users");
 var ORDERS_URL = "".concat(BASE_URL, "/660/orders?_expand=table");
-var orderContent = document.querySelector(".order-content"); // const orderList = document.querySelector(".order-list")
-// // console.log(orderList)
-
+var orderContent = document.querySelector(".order-content");
 orderContent.addEventListener("click", function (e) {
   // console.log(e.target.nodeName)
   if (e.target.nodeName === "INPUT") {
@@ -27,10 +25,14 @@ orderContent.addEventListener("click", function (e) {
     var AUTH = "Bearer ".concat(localStorage.getItem('token'));
     axios.defaults.headers.common.Authorization = AUTH;
     var url = "".concat(BASE_URL, "/660/orders/").concat(orderId);
-    axios["delete"](url).then(function (res) {
+    var data = {
+      hasAllDelivered: true
+    };
+    axios.patch(url, data).then(function (res) {
       console.log("已刪除");
       sweetSuccess("完成~");
       getOrderData();
+      renderTotalState();
     })["catch"](function (err) {
       console.log("再確認一下");
       sweetError("再確認一下喔");
@@ -69,7 +71,11 @@ function getOrderData() {
   var url = "".concat(ORDERS_URL);
   axios.get(url).then(function (res) {
     var orderData = res.data;
-    renderCartList(orderData);
+    var orderDataFiltered = orderData.filter(function (item) {
+      return item.hasAllDelivered == false;
+    }); // console.log(orderDataFiltered)
+
+    renderCartList(orderDataFiltered);
   })["catch"](function (err) {
     console.log(err);
   });
@@ -87,4 +93,9 @@ function switchTimeStamp(timeStamp) {
   var thisTime = "".concat(thisStamp.getFullYear(), "/").concat(thisStamp.getMonth() + 1, "/").concat(thisStamp.getDate(), " ").concat(thisStamp.getHours(), ":").concat(minutes);
   return thisTime;
 }
+
+new Sortable(orderContent, {
+  ghostClass: 'blue-background-class',
+  animation: 200
+});
 //# sourceMappingURL=admin.js.map

@@ -3,9 +3,17 @@
 var BASE_URL = 'http://localhost:3000'; // const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app/';
 
 var USERS_URL = "".concat(BASE_URL, "/600/users");
-var PRODUCTS_URL = "".concat(BASE_URL, "/664/products");
+var PRODUCTS_URL = "".concat(BASE_URL, "/products");
 var id = 1;
 var productsItemsContent = document.querySelector(".productsContent");
+var swiperProduct = document.querySelector('.js-swiper-product');
+swiperProduct.addEventListener('click', getTargetproductId);
+
+function getTargetproductId(e) {
+  // e.preventDefault();
+  var targetID = e.target.closest("A").dataset.id;
+  localStorage.setItem('productId', targetID) || 0;
+}
 
 function getLoggedID() {
   return localStorage.getItem('userId') || 0;

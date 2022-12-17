@@ -140,7 +140,7 @@ function sendOrderData(data) {
               console.log('已全部刪除！');
               setTimeout(function () {
                 console.log('Redirect!');
-                window.location.replace('./menu-hot.html');
+                window.location.replace('./menu.html');
               }, 1500);
               /* end of setTimeout */
             }
@@ -162,12 +162,12 @@ function renderConfirmContent(data, sum) {
   var content = "";
   var str = "";
   data.forEach(function (item) {
-    var template = "\n        <tr class=\"fs-8 fs-md-6\">\n            <td class=\"py-md-4\">".concat(item.product.title, "</td>\n            <td class=\"py-md-4 text-center\">$").concat(item.product.price, "</td>\n            <td class=\"py-md-4 text-center\">\n                <div class=\"d-flex col-md-6 col-12 ms-md-15\">\n                    <button type=\"button\" id=\"minus\" data-method=\"patch\" class='btn btn-link text-decoration-none px-2' value=\"-\">-</button>\n                    <input data-id='").concat(item.id, "' name='quantity' type='number' value='").concat(item.quantity, "' min='1' class='form-control form-control-sm text-center' disabled/>\n                    <button type=\"button\" id=\"plus\" data-method=\"patch\" class='btn btn-link text-decoration-none px-2' value=\"+\">+</button>\n                </div>\n            </td>\n            <td class=\"py-md-4 text-end \">$").concat(item.product.price * item.quantity, "</td>\n        </tr>\n        ");
+    var template = "\n        <tr class=\"fs-8 fs-md-6\">\n            <td class=\"py-md-4\">".concat(item.product.title, "</td>\n            <td class=\"py-md-4 text-center\">$").concat(toThousandsComma(item.product.price), "</td>\n            <td class=\"py-md-4 text-center\">\n                <div class=\"d-flex col-md-6 col-12 ms-md-15\">\n                    <button type=\"button\" id=\"minus\" data-method=\"patch\" class='btn btn-link text-decoration-none px-2' value=\"-\">-</button>\n                    <input data-id='").concat(item.id, "' name='quantity' type='number' value='").concat(item.quantity, "' min='1' class='form-control form-control-sm text-center' disabled/>\n                    <button type=\"button\" id=\"plus\" data-method=\"patch\" class='btn btn-link text-decoration-none px-2' value=\"+\">+</button>\n                </div>\n            </td>\n            <td class=\"py-md-4 text-end \">$").concat(toThousandsComma(item.product.price * item.quantity), "</td>\n        </tr>\n        ");
     str += template;
   });
   var table = "\n    <table class=\"table table-hover align-middle \">\n        <thead>\n            <tr>\n                <th width=\"35%\">\u9910\u9EDE\u8CC7\u8A0A</th>\n                <th width=\"15%\" class=\"text-center\">\u50F9\u683C</th>\n                <th width=\"35%\" class=\"text-center\">\u6578\u91CF</th>\n                <th width=\"15%\" class=\"text-end text-md-center\">\u5C0F\u8A08</th>\n            </tr>\n        </thead>\n        <tbody>\n            ".concat(str, "\n        </tbody>\n    </table>\n    ");
   content += table;
-  var chargeContent = "\n    <div class=\"confirm-charge-content d-flex flex-column mb-16\">\n        <div class=\"d-flex align-items-center ms-auto mb-1\">\n            <h5 class=\"fs-7 fs-md-6 mb-0\">\u5C0F\u8A08\u91D1\u984D\uFF1A</h5>\n            <span class=\"cart-charge-total text-primary fs-7 fs-md-6 ms-2\">NT $".concat(sum, "</span>\n         </div>\n        <div class=\"d-flex align-items-center  ms-auto mb-3\">\n            <h5 class=\"fs-8 fs-md-7 mb-0\">\u670D\u52D9\u8CBB(10%)\uFF1A</h5>\n            <span class=\"cart-charge-total text-primary fs-8 fs-md-7 ms-2\">NT $").concat(Math.round(sum * 0.1), "</span>\n        </div>\n        <div class=\"d-flex align-items-center ms-auto\">\n            <h5 class=\"fs-7 fs-md-6 mb-0\">\u7E3D\u5171\uFF1A</h5>\n            <span class=\"cart-charge-total text-primary fs-7 fs-md-6\">NT ").concat(Math.round(sum * 0.1) + sum, "</span>\n        </div>\n    </div>\n    ");
+  var chargeContent = "\n    <div class=\"confirm-charge-content d-flex flex-column mb-16\">\n        <div class=\"d-flex align-items-center ms-auto mb-1\">\n            <h5 class=\"fs-7 fs-md-6 mb-0\">\u5C0F\u8A08\u91D1\u984D\uFF1A</h5>\n            <span class=\"cart-charge-total text-primary fs-7 fs-md-6 ms-2\">NT $".concat(toThousandsComma(sum), "</span>\n         </div>\n        <div class=\"d-flex align-items-center  ms-auto mb-3\">\n            <h5 class=\"fs-8 fs-md-7 mb-0\">\u670D\u52D9\u8CBB(10%)\uFF1A</h5>\n            <span class=\"cart-charge-total text-primary fs-8 fs-md-7 ms-2\">NT $").concat(toThousandsComma(Math.round(sum * 0.1)), "</span>\n        </div>\n        <div class=\"d-flex align-items-center ms-auto\">\n            <h5 class=\"fs-7 fs-md-6 mb-0\">\u7E3D\u5171\uFF1A</h5>\n            <span class=\"cart-charge-total text-primary fs-7 fs-md-6\">NT $").concat(toThousandsComma(Math.round(sum * 0.1) + sum), "</span>\n        </div>\n    </div>\n    ");
   content += chargeContent;
   confirmContent.innerHTML = content;
 } //抓取購物車整理的資料
@@ -209,5 +209,9 @@ function init() {
   renderConfirmStatus();
 }
 
-init();
+init(); //utillities
+
+function toThousandsComma(num) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 //# sourceMappingURL=confirm.js.map
