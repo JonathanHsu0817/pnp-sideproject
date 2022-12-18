@@ -1,7 +1,7 @@
 "use strict";
 
-var BASE_URL = 'http://localhost:3000'; // const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app/';
-
+// const BASE_URL = 'http://localhost:3000';
+var BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app/';
 var swiperHot = document.querySelector('.js-swiper-hot'); // console.log(swiperHot);
 
 swiperHot.addEventListener('click', getTargetproductId);

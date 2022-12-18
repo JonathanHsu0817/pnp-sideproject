@@ -1,7 +1,7 @@
 "use strict";
 
-var BASE_URL = 'http://localhost:3000'; // const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
-
+// const BASE_URL = 'http://localhost:3000';
+var BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
 var USERS_URL = "".concat(BASE_URL, "/600/users");
 var ORDERS_URL = "".concat(BASE_URL, "/660/orders?_expand=table");
 var orderContent = document.querySelector(".order-content");
@@ -65,7 +65,6 @@ function renderCartList(data) {
 }
 
 function getOrderData() {
-  var userId = getLoggedID();
   var AUTH = "Bearer ".concat(localStorage.getItem('token'));
   axios.defaults.headers.common.Authorization = AUTH;
   var url = "".concat(ORDERS_URL);
