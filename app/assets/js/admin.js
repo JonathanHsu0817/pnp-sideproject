@@ -1,5 +1,5 @@
-const BASE_URL = 'http://localhost:3000';
-// const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+// const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
 const USERS_URL = `${BASE_URL}/600/users`;
 const ORDERS_URL = `${BASE_URL}/660/orders?_expand=table`;
 
@@ -97,9 +97,6 @@ function renderCartList(data){
 }
 
 function getOrderData(){
-    
-    const userId = getLoggedID();
-
     const AUTH = `Bearer ${localStorage.getItem('token')}`;
     axios.defaults.headers.common.Authorization = AUTH;
 
