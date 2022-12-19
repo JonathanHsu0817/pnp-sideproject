@@ -254,6 +254,13 @@ function renderCartState() {
   axios.get(url).then(function (res) {
     if (res.status === 200) {
       var _cartData = res.data;
+      console.log(_cartData);
+
+      if (_cartData.length == 0) {
+        renderNoCartData();
+        return;
+      }
+
       localStorage.setItem('carts', JSON.stringify(_cartData)); // console.log(cartData);
       //計算總金額
 
@@ -271,6 +278,11 @@ function renderCartState() {
       renderCartList(_cartData, sum);
     }
   }); //加入購物車按扭寫在menu.js & 各別product.js上(不同邏輯)
+}
+
+function renderNoCartData() {
+  var content = "\n  <div class=\"d-flex align-items-center justify-content-center\">\n    <p class=\"text-secondary my-16\">\u76EE\u524D\u8CFC\u7269\u8ECA\u662F\u7A7A\u7684\u5594~</p>\n  </div>\n  ";
+  cartList.innerHTML = content;
 } //渲染購物車畫面function
 
 
@@ -286,13 +298,13 @@ function renderCartList(data, total) {
 }
 
 function init() {
-  // console.log('getLoggedID():::', getLoggedID());
+  renderResturantMenu(); // console.log('getLoggedID():::', getLoggedID());
+
   if (getLoggedID()) {
     var localToken = localStorage.getItem('token');
     var AUTH = "Bearer ".concat(localToken);
     axios.defaults.headers.common.Authorization = AUTH;
-    renderUserMenu();
-    renderResturantMenu(); //購物車
+    renderUserMenu(); //購物車
 
     renderCartState();
   }
