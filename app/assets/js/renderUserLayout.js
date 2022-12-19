@@ -1,5 +1,5 @@
-const BASE_URL = 'http://localhost:3000';
-// const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+// const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
 const LOGIN_URL = `${BASE_URL}/login`;
 const USERS_URL = `${BASE_URL}/600/users`;
 const PRODUCTS_URL = `${BASE_URL}/664/products`;
@@ -305,6 +305,11 @@ function renderCartState(){
   .then(res=>{
     if (res.status === 200) {
       const cartData = res.data;
+      console.log(cartData)
+      if(cartData.length ==0){
+        renderNoCartData();
+        return;
+      }
       localStorage.setItem('carts', JSON.stringify(cartData));
       // console.log(cartData);
       //計算總金額
@@ -322,7 +327,14 @@ function renderCartState(){
   })
   //加入購物車按扭寫在menu.js & 各別product.js上(不同邏輯)
 }
-
+function renderNoCartData(){
+  let content =`
+  <div class="d-flex align-items-center justify-content-center">
+    <p class="text-secondary my-16">目前購物車是空的喔~</p>
+  </div>
+  `
+  cartList.innerHTML = content;
+}
 //渲染購物車畫面function
 function renderCartList(data,total){
   let str ="";
@@ -354,6 +366,7 @@ function renderCartList(data,total){
 }
 
  function init() {
+    renderResturantMenu();
     // console.log('getLoggedID():::', getLoggedID());
     if (getLoggedID()) {
       const localToken = localStorage.getItem('token');
@@ -362,7 +375,7 @@ function renderCartList(data,total){
       axios.defaults.headers.common.Authorization = AUTH;
 
       renderUserMenu();
-      renderResturantMenu();
+      
 
       //購物車
       renderCartState();
