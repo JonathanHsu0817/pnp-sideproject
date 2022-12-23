@@ -40,7 +40,7 @@ function login() {
         var isAdmin = ((_response$data = response.data) === null || _response$data === void 0 ? void 0 : (_response$data$user = _response$data.user) === null || _response$data$user === void 0 ? void 0 : _response$data$user.role) === 'admin';
 
         if (isAdmin) {
-          redirectPath = 'https://github.com/JonathanHsu0817/pnp-sideproject/admin.html';
+          redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html';
         }
 
         setTimeout(function () {
@@ -118,7 +118,7 @@ function logout(e) {
 
   localStorage.clear();
   setTimeout(function () {
-    window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/index.html');
+    window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html');
   }, 300);
   /* end of setTimeout */
 } //總計未出餐
