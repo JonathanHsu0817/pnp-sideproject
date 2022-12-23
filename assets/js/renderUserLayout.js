@@ -45,7 +45,7 @@ function login() {
         var isAdmin = ((_response$data = response.data) === null || _response$data === void 0 ? void 0 : (_response$data$user = _response$data.user) === null || _response$data$user === void 0 ? void 0 : _response$data$user.role) === 'admin';
 
         if (isAdmin) {
-          redirectPath = 'admin.html';
+          redirectPath = 'https://github.com/JonathanHsu0817/pnp-sideproject/admin.html';
         }
 
         setTimeout(function () {
@@ -231,7 +231,7 @@ deleteAllCart.addEventListener("click", function (e) {
       sweetSuccess("已全部清空~~");
       setTimeout(function () {
         console.log('Redirect!');
-        window.location.replace('./menu.html');
+        window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/menu.html');
       }, 150);
     }
   })["catch"](function (error) {

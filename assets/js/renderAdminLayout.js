@@ -1,7 +1,7 @@
 "use strict";
 
-// const BASE_URL = 'http://localhost:3000';
-var BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+var BASE_URL = 'http://localhost:3000'; // const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+
 var LOGIN_URL = "".concat(BASE_URL, "/login");
 var USERS_URL = "".concat(BASE_URL, "/600/users");
 var ORDERS_URL = "".concat(BASE_URL, "/660/orders?_expand=table");
