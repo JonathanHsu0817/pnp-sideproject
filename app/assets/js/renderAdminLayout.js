@@ -41,7 +41,7 @@ function login() {
             // const isAdmin = response.data?.user?.role?.includes('admin');
             const isAdmin = response.data?.user?.role === 'admin';
             if (isAdmin) {
-              redirectPath = 'https://github.com/JonathanHsu0817/pnp-sideproject/admin.html';
+              redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html';
             }
   
             setTimeout(() => {
@@ -129,7 +129,7 @@ function logout(e) {
     localStorage.clear();
   
     setTimeout(() => {
-      window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/index.html');
+      window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html');
     }, 300);
     /* end of setTimeout */
 }

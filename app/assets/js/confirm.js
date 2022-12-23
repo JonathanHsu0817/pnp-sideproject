@@ -155,7 +155,7 @@ function sendOrderData(data){
                     console.log('已全部刪除！');
                     setTimeout(() => {
                       console.log('Redirect!');
-                      window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/menu.html');
+                      window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/menu.html');
                     }, 1500);
                     /* end of setTimeout */
                   }
