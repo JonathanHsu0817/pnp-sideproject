@@ -1,7 +1,7 @@
 "use strict";
 
-var BASE_URL = 'http://localhost:3000'; // const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
-
+// const BASE_URL = 'http://localhost:3000';
+var BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
 var LOGIN_URL = "".concat(BASE_URL, "/login");
 var USERS_URL = "".concat(BASE_URL, "/600/users");
 var ORDERS_URL = "".concat(BASE_URL, "/660/orders?_expand=table");
@@ -40,7 +40,7 @@ function login() {
         var isAdmin = ((_response$data = response.data) === null || _response$data === void 0 ? void 0 : (_response$data$user = _response$data.user) === null || _response$data$user === void 0 ? void 0 : _response$data$user.role) === 'admin';
 
         if (isAdmin) {
-          redirectPath = 'admin.html';
+          redirectPath = 'https://github.com/JonathanHsu0817/pnp-sideproject/admin.html';
         }
 
         setTimeout(function () {
@@ -118,7 +118,7 @@ function logout(e) {
 
   localStorage.clear();
   setTimeout(function () {
-    window.location.replace('/');
+    window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/index.html');
   }, 300);
   /* end of setTimeout */
 } //總計未出餐

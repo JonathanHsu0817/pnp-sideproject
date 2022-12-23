@@ -127,7 +127,7 @@ function logout(e) {
 
   localStorage.clear();
   setTimeout(function () {
-    window.location.replace('/');
+    window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/index.html');
   }, 300);
   /* end of setTimeout */
 }
