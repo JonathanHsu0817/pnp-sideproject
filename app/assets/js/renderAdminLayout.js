@@ -1,5 +1,6 @@
-const BASE_URL = 'http://localhost:3000';
-// const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+// const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+
 const LOGIN_URL = `${BASE_URL}/login`;
 const USERS_URL = `${BASE_URL}/600/users`;
 const ORDERS_URL = `${BASE_URL}/660/orders?_expand=table`;
@@ -40,7 +41,7 @@ function login() {
             // const isAdmin = response.data?.user?.role?.includes('admin');
             const isAdmin = response.data?.user?.role === 'admin';
             if (isAdmin) {
-              redirectPath = 'admin.html';
+              redirectPath = 'https://github.com/JonathanHsu0817/pnp-sideproject/admin.html';
             }
   
             setTimeout(() => {
@@ -128,7 +129,7 @@ function logout(e) {
     localStorage.clear();
   
     setTimeout(() => {
-      window.location.replace('/');
+      window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/index.html');
     }, 300);
     /* end of setTimeout */
 }

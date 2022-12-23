@@ -152,7 +152,7 @@ function templateOfUserMenu(user, template = '') {
     localStorage.clear();
   
     setTimeout(() => {
-      window.location.replace('/');
+      window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/index.html');
     }, 300);
     /* end of setTimeout */
   }
