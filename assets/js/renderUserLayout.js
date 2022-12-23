@@ -40,7 +40,7 @@ function login() {
 
         sweetSuccess("登入成功!", "歡迎光臨~");
         saveUserToLocal(response.data);
-        var redirectPath = '/'; // const isAdmin = response.data?.user?.role?.includes('admin');
+        var redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html'; // const isAdmin = response.data?.user?.role?.includes('admin');
 
         var isAdmin = ((_response$data = response.data) === null || _response$data === void 0 ? void 0 : (_response$data$user = _response$data.user) === null || _response$data$user === void 0 ? void 0 : _response$data$user.role) === 'admin';
 
