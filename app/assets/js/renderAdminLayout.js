@@ -37,7 +37,7 @@ function login() {
             sweetSuccess("登入成功!", "歡迎光臨~")
             saveUserToLocal(response.data);
   
-            let redirectPath = '/';
+            let redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html';
             // const isAdmin = response.data?.user?.role?.includes('admin');
             const isAdmin = response.data?.user?.role === 'admin';
             if (isAdmin) {
