@@ -136,8 +136,8 @@ function sendOrderData(data){
                     const localCarts = localStorage.getItem('carts');
                     const carts = JSON.parse(localCarts);
 
-                    const AUTH = `Bearer ${localStorage.getItem('token')}`;
-                    axios.defaults.headers.common.Authorization = AUTH;
+                    // const AUTH = `Bearer ${localStorage.getItem('token')}`;
+                    // axios.defaults.headers.common.Authorization = AUTH;
 
                     let arrayOfDelete = [];
                     carts.forEach((item) => {
@@ -155,7 +155,7 @@ function sendOrderData(data){
                     console.log('已全部刪除！');
                     setTimeout(() => {
                       console.log('Redirect!');
-                      window.location.replace('./menu.html');
+                      window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/menu.html');
                     }, 1500);
                     /* end of setTimeout */
                   }
