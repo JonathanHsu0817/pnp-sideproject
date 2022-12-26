@@ -1,9 +1,9 @@
 "use strict";
 
-// const BASE_URL = 'http://localhost:3000';
-var BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+var BASE_URL = 'http://localhost:3000'; // const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+
 var LOGIN_URL = "".concat(BASE_URL, "/login");
-var USERS_URL = "".concat(BASE_URL, "/600/users");
+var USERS_URL = "".concat(BASE_URL, "/660/users");
 var ORDERS_URL = "".concat(BASE_URL, "/660/orders?_expand=table");
 var formLogin = document.querySelector(".js-form-login");
 var btnLogin = document.querySelector(".js-btn-login");
@@ -34,13 +34,14 @@ function login() {
         var _response$data, _response$data$user;
 
         sweetSuccess("登入成功!", "歡迎光臨~");
-        saveUserToLocal(response.data);
-        var redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html'; // const isAdmin = response.data?.user?.role?.includes('admin');
+        saveUserToLocal(response.data); // let redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html';
 
+        var redirectPath = './index.html';
         var isAdmin = ((_response$data = response.data) === null || _response$data === void 0 ? void 0 : (_response$data$user = _response$data.user) === null || _response$data$user === void 0 ? void 0 : _response$data$user.role) === 'admin';
 
         if (isAdmin) {
-          redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html';
+          // redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html';
+          redirectPath = './admin.html';
         }
 
         setTimeout(function () {
@@ -118,7 +119,8 @@ function logout(e) {
 
   localStorage.clear();
   setTimeout(function () {
-    window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html');
+    // window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html');
+    window.location.replace('./index.html');
   }, 300);
   /* end of setTimeout */
 } //總計未出餐

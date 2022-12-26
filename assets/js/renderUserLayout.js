@@ -1,12 +1,12 @@
 "use strict";
 
-// const BASE_URL = 'http://localhost:3000';
-var BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+var BASE_URL = 'http://localhost:3000'; // const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+
 var LOGIN_URL = "".concat(BASE_URL, "/login");
-var USERS_URL = "".concat(BASE_URL, "/600/users");
+var USERS_URL = "".concat(BASE_URL, "/660/users");
 var PRODUCTS_URL = "".concat(BASE_URL, "/664/products");
 var TABLES_URL = "".concat(BASE_URL, "/644/tables");
-var CARTS_URL = "".concat(BASE_URL, "/600/carts");
+var CARTS_URL = "".concat(BASE_URL, "/660/carts");
 var formLogin = document.querySelector(".js-form-login");
 var btnLogin = document.querySelector(".js-btn-login");
 var btnUserMenu = document.querySelector('.js-user-selection');
@@ -39,13 +39,13 @@ function login() {
         var _response$data, _response$data$user;
 
         sweetSuccess("登入成功!", "歡迎光臨~");
-        saveUserToLocal(response.data);
-        var redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html'; // const isAdmin = response.data?.user?.role?.includes('admin');
+        saveUserToLocal(response.data); // let redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html';
 
+        var redirectPath = '/';
         var isAdmin = ((_response$data = response.data) === null || _response$data === void 0 ? void 0 : (_response$data$user = _response$data.user) === null || _response$data$user === void 0 ? void 0 : _response$data$user.role) === 'admin';
 
         if (isAdmin) {
-          redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html';
+          redirectPath = './admin.html';
         }
 
         setTimeout(function () {
@@ -127,7 +127,8 @@ function logout(e) {
 
   localStorage.clear();
   setTimeout(function () {
-    window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html');
+    // window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html');
+    window.location.replace('./index.html');
   }, 300);
   /* end of setTimeout */
 }
@@ -163,7 +164,7 @@ btnUserMenu.addEventListener("click", function (e) {
 var cartList = document.querySelector(".cart-body"); //指定刪除(垃圾桶)
 
 cartList.addEventListener("click", function (e) {
-  var targetA = e.target.closest("a"); // console.log(targetA.childNodes[0].nodeName)
+  var targetA = e.target.closest("a");
 
   if (!targetA) {
     return;
@@ -203,7 +204,7 @@ btnConfirm.addEventListener("click", function (e) {
         return;
       }
 
-      window.location.replace('./confirm.html');
+      window.location.replace('./confirm.html'); // 
     }
   });
 }); //清空購物車
@@ -230,8 +231,9 @@ deleteAllCart.addEventListener("click", function (e) {
       renderCartState();
       sweetSuccess("已全部清空~~");
       setTimeout(function () {
-        console.log('Redirect!');
-        window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/menu.html');
+        console.log('Redirect!'); // window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/menu.html');
+
+        window.location.replace('./menu.html');
       }, 150);
     }
   })["catch"](function (error) {

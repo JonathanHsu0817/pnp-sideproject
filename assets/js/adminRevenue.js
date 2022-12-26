@@ -12,8 +12,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-// const BASE_URL = 'http://localhost:3000';
-var BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+var BASE_URL = 'http://localhost:3000'; // const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+
 var ORDERS_URL = "".concat(BASE_URL, "/660/orders?_expand=table");
 
 function sortingDataNum(data) {
@@ -76,8 +76,8 @@ function renderC3Num(data) {
   var totalItemC3 = Object.entries(data);
   totalItemC3.sort(function (a, b) {
     return b[1] - a[1];
-  });
-  console.log(totalItemC3);
+  }); // console.log(totalItemC3)
+
   var otherItem = totalItemC3.filter(function (item, index) {
     return index > 2;
   }); // console.log(otherItem);

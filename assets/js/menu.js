@@ -1,10 +1,10 @@
 "use strict";
 
-// const BASE_URL = 'http://localhost:3000';
-var BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+var BASE_URL = 'http://localhost:3000'; // const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+
 var BASE_PAGE = 1; // const BASE_PRODUCT_URL = `${BASE_URL}/664/products?_page=${BASE_PAGE}&_limit=6`;
 
-var USERS_URL = "".concat(BASE_URL, "/600/users");
+var USERS_URL = "".concat(BASE_URL, "/660/users");
 
 function getLoggedID() {
   return localStorage.getItem('userId') || 0;
@@ -68,7 +68,7 @@ function postToCart(url, data) {
     if ((error === null || error === void 0 ? void 0 : (_error$response = error.response) === null || _error$response === void 0 ? void 0 : _error$response.status) === 401) {
       console.log('401');
       localStorage.clear();
-      window.location.replace('/login.html');
+      window.location.replace('./index.html');
     }
   });
 } //渲染卡片
