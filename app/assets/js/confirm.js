@@ -1,8 +1,8 @@
-// const BASE_URL = 'http://localhost:3000';
-const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+const BASE_URL = 'http://localhost:3000';   
+// const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
 
-const USERS_URL = `${BASE_URL}/600/users`;
-const CARTS_URL = `${BASE_URL}/600/carts`;
+const USERS_URL = `${BASE_URL}/660/users`;
+const CARTS_URL = `${BASE_URL}/660/carts`;
 
 const confirmContent = document.querySelector(".confirm-content")
 
@@ -155,7 +155,8 @@ function sendOrderData(data){
                     console.log('已全部刪除！');
                     setTimeout(() => {
                       console.log('Redirect!');
-                      window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/menu.html');
+                    //   window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/menu.html');
+                      window.location.replace('./menu.html');
                     }, 1500);
                     /* end of setTimeout */
                   }

@@ -1,11 +1,11 @@
-// const BASE_URL = 'http://localhost:3000';
-const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+const BASE_URL = 'http://localhost:3000';
+// const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
 
 const LOGIN_URL = `${BASE_URL}/login`;
-const USERS_URL = `${BASE_URL}/600/users`;
+const USERS_URL = `${BASE_URL}/660/users`;
 const PRODUCTS_URL = `${BASE_URL}/664/products`;
 const TABLES_URL = `${BASE_URL}/644/tables`;
-const CARTS_URL = `${BASE_URL}/600/carts`;
+const CARTS_URL = `${BASE_URL}/660/carts`;
 
 const formLogin = document.querySelector(".js-form-login");
 const btnLogin = document.querySelector(".js-btn-login");
@@ -45,11 +45,12 @@ function login() {
           sweetSuccess("登入成功!", "歡迎光臨~")
           saveUserToLocal(response.data);
 
-          let redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html';
-          // const isAdmin = response.data?.user?.role?.includes('admin');
+          // let redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html';
+          let redirectPath = '/';
+
           const isAdmin = response.data?.user?.role === 'admin';
           if (isAdmin) {
-            redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html';
+            redirectPath = './admin.html';
           }
 
           setTimeout(() => {
@@ -152,7 +153,8 @@ function templateOfUserMenu(user, template = '') {
     localStorage.clear();
   
     setTimeout(() => {
-      window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html');
+      // window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html');
+      window.location.replace('./index.html');
     }, 300);
     /* end of setTimeout */
   }
@@ -166,7 +168,6 @@ function templateOfUserMenu(user, template = '') {
     localStorage.setItem('category', targetMenuSelection)
   })
     
-
   //渲染菜單選單
   function renderResturantMenu(){
     let content = `
@@ -200,7 +201,6 @@ const cartList= document.querySelector(".cart-body");
 //指定刪除(垃圾桶)
 cartList.addEventListener("click",(e)=>{
   let targetA = e.target.closest("a")
-  // console.log(targetA.childNodes[0].nodeName)
   if(!targetA){
     return
   }
@@ -225,7 +225,6 @@ cartList.addEventListener("click",(e)=>{
   }
 })
 
-
 //確認是否購物空值
 const btnConfirm = document.querySelector(".js-confirm")
 
@@ -249,6 +248,7 @@ btnConfirm.addEventListener("click",(e)=>{
         return
       }
       window.location.replace('./confirm.html')
+      // 
     }
   })
 })
@@ -278,7 +278,8 @@ deleteAllCart.addEventListener("click",(e)=>{
       sweetSuccess("已全部清空~~")
       setTimeout(() => {
         console.log('Redirect!');
-        window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/menu.html');
+        // window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/menu.html');
+        window.location.replace('./menu.html');
       }, 150);
     }
     })
@@ -377,7 +378,6 @@ function renderCartList(data,total){
 
       renderUserMenu();
       
-
       //購物車
       renderCartState();
     }

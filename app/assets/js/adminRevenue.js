@@ -1,5 +1,5 @@
-// const BASE_URL = 'http://localhost:3000';
-const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+const BASE_URL = 'http://localhost:3000';
+// const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
 
 const ORDERS_URL = `${BASE_URL}/660/orders?_expand=table`;
 
@@ -62,9 +62,8 @@ function renderC3Num(data){
     totalItemC3.sort((a,b)=>{
         return b[1]-a[1]
     })
-    console.log(totalItemC3)
+    // console.log(totalItemC3)
     
-
     let otherItem = totalItemC3.filter((item,index)=>{
         return index>2
     })

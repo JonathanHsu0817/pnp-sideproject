@@ -1,8 +1,8 @@
-// const BASE_URL = 'http://localhost:3000';
-const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+const BASE_URL = 'http://localhost:3000';
+// const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
 
 const LOGIN_URL = `${BASE_URL}/login`;
-const USERS_URL = `${BASE_URL}/600/users`;
+const USERS_URL = `${BASE_URL}/660/users`;
 const ORDERS_URL = `${BASE_URL}/660/orders?_expand=table`;
 
 const formLogin = document.querySelector(".js-form-login");
@@ -37,11 +37,13 @@ function login() {
             sweetSuccess("登入成功!", "歡迎光臨~")
             saveUserToLocal(response.data);
   
-            let redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html';
-            // const isAdmin = response.data?.user?.role?.includes('admin');
+            // let redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html';
+            let redirectPath = './index.html';
+
             const isAdmin = response.data?.user?.role === 'admin';
             if (isAdmin) {
-              redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html';
+              // redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html';
+              redirectPath = './admin.html';
             }
   
             setTimeout(() => {
@@ -129,7 +131,8 @@ function logout(e) {
     localStorage.clear();
   
     setTimeout(() => {
-      window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html');
+      // window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html');
+      window.location.replace('./index.html');
     }, 300);
     /* end of setTimeout */
 }

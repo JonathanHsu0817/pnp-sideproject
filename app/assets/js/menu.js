@@ -1,8 +1,8 @@
-// const BASE_URL = 'http://localhost:3000';
-const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+const BASE_URL = 'http://localhost:3000';
+// const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
 let BASE_PAGE = 1
 // const BASE_PRODUCT_URL = `${BASE_URL}/664/products?_page=${BASE_PAGE}&_limit=6`;
-const USERS_URL = `${BASE_URL}/600/users`;
+const USERS_URL = `${BASE_URL}/660/users`;
 
 
 function getLoggedID() {
@@ -70,7 +70,7 @@ function postToCart(url,data){
     if (error?.response?.status === 401) {
       console.log('401');
       localStorage.clear();
-      window.location.replace('/login.html');
+      window.location.replace('./index.html');
     }
   });
 }
@@ -118,7 +118,6 @@ function templateOfProducts(products, template = ``) {
     /* end of products.forEach() */
     return template;
   }
-
 
   //pagination切換
   const pagination = document.querySelector(".pagination")
