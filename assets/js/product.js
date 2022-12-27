@@ -77,7 +77,7 @@ productsItemsContent.addEventListener("click", function (e) {
     if ((error === null || error === void 0 ? void 0 : (_error$response = error.response) === null || _error$response === void 0 ? void 0 : _error$response.status) === 401) {
       console.log('401');
       localStorage.clear();
-      window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/index.html'); // window.location.replace('./login.html');
+      window.location.replace('https://github.com/jonathanHsu0817/pnp-sideproject/index.html'); // window.location.replace('./login.html');
     }
   });
 });
