@@ -203,7 +203,7 @@ btnConfirm.addEventListener("click", function (e) {
         return;
       }
 
-      window.location.replace('https://github.com/jonathanHsu0817/pnp-sideproject/menu.html'); // window.location.replace('./menu.html')
+      window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/confirm.html'); // window.location.replace('./confirm.html')
     }
   });
 }); //清空購物車
@@ -231,7 +231,7 @@ deleteAllCart.addEventListener("click", function (e) {
       sweetSuccess("已全部清空~~");
       setTimeout(function () {
         console.log('Redirect!');
-        window.location.replace('https://github.com/jonathanHsu0817/pnp-sideproject/menu.html'); // window.location.replace('./menu.html');
+        window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/menu.html'); // window.location.replace('./menu.html');
       }, 150);
     }
   })["catch"](function (error) {
