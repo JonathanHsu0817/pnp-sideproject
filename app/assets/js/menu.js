@@ -1,5 +1,5 @@
-const BASE_URL = 'http://localhost:3000';
-// const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+// const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
 let BASE_PAGE = 1
 // const BASE_PRODUCT_URL = `${BASE_URL}/664/products?_page=${BASE_PAGE}&_limit=6`;
 const USERS_URL = `${BASE_URL}/660/users`;
@@ -70,7 +70,8 @@ function postToCart(url,data){
     if (error?.response?.status === 401) {
       console.log('401');
       localStorage.clear();
-      window.location.replace('./index.html');
+      window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/menu.html');
+      // window.location.replace('./menu.html');
     }
   });
 }

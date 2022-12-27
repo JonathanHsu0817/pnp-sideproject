@@ -1,5 +1,5 @@
-const BASE_URL = 'http://localhost:3000';
-// const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+// const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
 
 const LOGIN_URL = `${BASE_URL}/login`;
 const USERS_URL = `${BASE_URL}/660/users`;
@@ -37,13 +37,13 @@ function login() {
             sweetSuccess("登入成功!", "歡迎光臨~")
             saveUserToLocal(response.data);
   
-            // let redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html';
-            let redirectPath = './index.html';
+            let redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html';
+            // let redirectPath = './index.html';
 
             const isAdmin = response.data?.user?.role === 'admin';
             if (isAdmin) {
-              // redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html';
-              redirectPath = './admin.html';
+              redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html';
+              // redirectPath = './admin.html';
             }
   
             setTimeout(() => {
@@ -86,7 +86,7 @@ function templateOfAdminMenu(user, template = '') {
     template += `
           <li class="nav-item">
             <div class="d-flex">
-                <a href="#" class="js-logout d-block btn btn-outline-primary btn-bg-white">
+                <a href="./index.html" class="js-logout d-block btn btn-outline-primary btn-bg-white">
                 登出
                 </a>
             </div>
@@ -131,8 +131,8 @@ function logout(e) {
     localStorage.clear();
   
     setTimeout(() => {
-      // window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html');
-      window.location.replace('./index.html');
+      window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html');
+      // window.location.replace('./index.html');
     }, 300);
     /* end of setTimeout */
 }

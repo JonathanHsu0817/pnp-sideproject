@@ -1,5 +1,5 @@
-const BASE_URL = 'http://localhost:3000';
-// const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+// const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
 
 const LOGIN_URL = `${BASE_URL}/login`;
 const USERS_URL = `${BASE_URL}/660/users`;
@@ -45,12 +45,13 @@ function login() {
           sweetSuccess("登入成功!", "歡迎光臨~")
           saveUserToLocal(response.data);
 
-          // let redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html';
-          let redirectPath = '/';
+          let redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html';
+          // let redirectPath = '/';
 
           const isAdmin = response.data?.user?.role === 'admin';
           if (isAdmin) {
-            redirectPath = './admin.html';
+            let redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html';
+            // redirectPath = './admin.html';
           }
 
           setTimeout(() => {
@@ -153,8 +154,8 @@ function templateOfUserMenu(user, template = '') {
     localStorage.clear();
   
     setTimeout(() => {
-      // window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html');
-      window.location.replace('./index.html');
+      window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html');
+      // window.location.replace('./index.html');
     }, 300);
     /* end of setTimeout */
   }
@@ -247,8 +248,8 @@ btnConfirm.addEventListener("click",(e)=>{
         sweetError("購物車是空的喔~")
         return
       }
-      window.location.replace('./confirm.html')
-      // 
+      window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/menu.html');
+      // window.location.replace('./menu.html')
     }
   })
 })
@@ -278,8 +279,8 @@ deleteAllCart.addEventListener("click",(e)=>{
       sweetSuccess("已全部清空~~")
       setTimeout(() => {
         console.log('Redirect!');
-        // window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/menu.html');
-        window.location.replace('./menu.html');
+        window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/menu.html');
+        // window.location.replace('./menu.html');
       }, 150);
     }
     })

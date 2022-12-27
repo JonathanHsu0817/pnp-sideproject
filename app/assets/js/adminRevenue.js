@@ -1,5 +1,5 @@
-const BASE_URL = 'http://localhost:3000';
-// const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
+// const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
 
 const ORDERS_URL = `${BASE_URL}/660/orders?_expand=table`;
 
