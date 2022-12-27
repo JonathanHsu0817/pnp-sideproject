@@ -93,7 +93,6 @@ function templateOfUserMenu(user, template = '') {
       `;
     }
     /* end of (isAdmin) */
-redirectPath
     template += `
       <li class="nav-item">
         <div class="d-flex">
