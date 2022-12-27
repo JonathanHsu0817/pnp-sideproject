@@ -40,17 +40,17 @@ function login() {
 
         sweetSuccess("登入成功!", "歡迎光臨~");
         saveUserToLocal(response.data);
-        var _redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html'; // let redirectPath = '/';
+        var redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html'; // let redirectPath = '/';
 
         var isAdmin = ((_response$data = response.data) === null || _response$data === void 0 ? void 0 : (_response$data$user = _response$data.user) === null || _response$data$user === void 0 ? void 0 : _response$data$user.role) === 'admin';
 
         if (isAdmin) {
-          _redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html'; // redirectPath = './admin.html';
+          redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html'; // redirectPath = './admin.html';
         }
 
         setTimeout(function () {
           console.log('Redirect!');
-          window.location.replace(_redirectPath);
+          window.location.replace(redirectPath);
         }, 150);
         /* end of setTimeout */
       }
@@ -86,7 +86,6 @@ function templateOfUserMenu(user) {
   /* end of (isAdmin) */
 
 
-  redirectPath;
   template += "\n      <li class=\"nav-item\">\n        <div class=\"d-flex\">\n          <select name=\"table-selection\" id=\"table-selection\" class=\"border-primary bg-backStage text-primary me-2\">\n            <option value=\"\u8ACB\u9078\u64C7\u684C\u865F\">\u8ACB\u9078\u64C7\u684C\u865F</option>\n            <option value=\"1\">B1</option>\n            <option value=\"2\">B2</option>\n            <option value=\"3\">B3</option>\n            <option value=\"4\">B4</option>\n            <option value=\"5\">B5</option>\n            <option value=\"6\">B6</option>\n            <option value=\"7\">B7</option>\n            <option value=\"8\">B8</option>\n            <option value=\"9\">B9</option>\n          </select>\n          <a href=\"#\" class=\"js-logout d-block btn btn-outline-primary btn-bg-white\">\n            \u767B\u51FA\n          </a>\n        </div>\n      </li>";
   return template;
 }
