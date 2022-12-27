@@ -50,7 +50,7 @@ function login() {
 
           const isAdmin = response.data?.user?.role === 'admin';
           if (isAdmin) {
-            let redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html';
+            redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html';
             // redirectPath = './admin.html';
           }
 
@@ -93,7 +93,7 @@ function templateOfUserMenu(user, template = '') {
       `;
     }
     /* end of (isAdmin) */
-
+redirectPath
     template += `
       <li class="nav-item">
         <div class="d-flex">
@@ -248,7 +248,7 @@ btnConfirm.addEventListener("click",(e)=>{
         sweetError("購物車是空的喔~")
         return
       }
-      window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/menu.html');
+      window.location.replace('https://github.com/jonathanHsu0817/pnp-sideproject/menu.html');
       // window.location.replace('./menu.html')
     }
   })
