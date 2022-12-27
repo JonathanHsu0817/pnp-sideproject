@@ -1,7 +1,7 @@
 "use strict";
 
-var BASE_URL = 'http://localhost:3000'; // const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
-
+// const BASE_URL = 'http://localhost:3000';
+var BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
 var LOGIN_URL = "".concat(BASE_URL, "/login");
 var USERS_URL = "".concat(BASE_URL, "/660/users");
 var ORDERS_URL = "".concat(BASE_URL, "/660/orders?_expand=table");
@@ -34,14 +34,13 @@ function login() {
         var _response$data, _response$data$user;
 
         sweetSuccess("登入成功!", "歡迎光臨~");
-        saveUserToLocal(response.data); // let redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html';
+        saveUserToLocal(response.data);
+        var redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/index.html'; // let redirectPath = './index.html';
 
-        var redirectPath = './index.html';
         var isAdmin = ((_response$data = response.data) === null || _response$data === void 0 ? void 0 : (_response$data$user = _response$data.user) === null || _response$data$user === void 0 ? void 0 : _response$data$user.role) === 'admin';
 
         if (isAdmin) {
-          // redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html';
-          redirectPath = './admin.html';
+          redirectPath = 'https://jonathanhsu0817.github.io/pnp-sideproject/admin.html'; // redirectPath = './admin.html';
         }
 
         setTimeout(function () {
@@ -80,7 +79,7 @@ function templateOfAdminMenu(user) {
   /* end of (isAdmin) */
 
 
-  template += "\n          <li class=\"nav-item\">\n            <div class=\"d-flex\">\n                <a href=\"#\" class=\"js-logout d-block btn btn-outline-primary btn-bg-white\">\n                \u767B\u51FA\n                </a>\n            </div>\n        </li>\n    ";
+  template += "\n          <li class=\"nav-item\">\n            <div class=\"d-flex\">\n                <a href=\"./index.html\" class=\"js-logout d-block btn btn-outline-primary btn-bg-white\">\n                \u767B\u51FA\n                </a>\n            </div>\n        </li>\n    ";
   return template;
 }
 
@@ -119,8 +118,7 @@ function logout(e) {
 
   localStorage.clear();
   setTimeout(function () {
-    // window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html');
-    window.location.replace('./index.html');
+    window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/index.html'); // window.location.replace('./index.html');
   }, 300);
   /* end of setTimeout */
 } //總計未出餐

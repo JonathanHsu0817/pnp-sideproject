@@ -1,7 +1,7 @@
 "use strict";
 
-var BASE_URL = 'http://localhost:3000'; // const BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
-
+// const BASE_URL = 'http://localhost:3000';  
+var BASE_URL = 'https://sideproject-pnp-json-server-vercel.vercel.app';
 var USERS_URL = "".concat(BASE_URL, "/660/users");
 var CARTS_URL = "".concat(BASE_URL, "/660/carts");
 var confirmContent = document.querySelector(".confirm-content");
@@ -138,9 +138,8 @@ function sendOrderData(data) {
             if (results.length === arrayOfDelete.length) {
               console.log('已全部刪除！');
               setTimeout(function () {
-                console.log('Redirect!'); //   window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/menu.html');
-
-                window.location.replace('./menu.html');
+                console.log('Redirect!');
+                window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/menu.html'); //   window.location.replace('./menu.html');
               }, 1500);
               /* end of setTimeout */
             }
