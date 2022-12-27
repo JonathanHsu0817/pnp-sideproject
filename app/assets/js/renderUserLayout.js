@@ -279,7 +279,7 @@ deleteAllCart.addEventListener("click",(e)=>{
       sweetSuccess("已全部清空~~")
       setTimeout(() => {
         console.log('Redirect!');
-        window.location.replace('https://github.com/JonathanHsu0817/pnp-sideproject/menu.html');
+        window.location.replace('https://github.com/jonathanHsu0817/pnp-sideproject/menu.html');
         // window.location.replace('./menu.html');
       }, 150);
     }
