@@ -247,8 +247,8 @@ btnConfirm.addEventListener("click",(e)=>{
         sweetError("購物車是空的喔~")
         return
       }
-      window.location.replace('https://github.com/jonathanHsu0817/pnp-sideproject/menu.html');
-      // window.location.replace('./menu.html')
+      window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/confirm.html');
+      // window.location.replace('./confirm.html')
     }
   })
 })
@@ -278,7 +278,7 @@ deleteAllCart.addEventListener("click",(e)=>{
       sweetSuccess("已全部清空~~")
       setTimeout(() => {
         console.log('Redirect!');
-        window.location.replace('https://github.com/jonathanHsu0817/pnp-sideproject/menu.html');
+        window.location.replace('https://jonathanhsu0817.github.io/pnp-sideproject/menu.html');
         // window.location.replace('./menu.html');
       }, 150);
     }
